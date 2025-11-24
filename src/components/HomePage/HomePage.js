@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { useSpeechInput } from "../../hooks/useSpeechInput";
+// import { useSpeechInput } from "../../hooks/useSpeechInput";
 import { styled } from "@stitches/react";
 import { TypeAnimation } from "react-type-animation";
 // import { Parallax } from "react-parallax";
@@ -110,35 +110,12 @@ function HomePage({ isBatterySavingOn, scrolled, addTab, sendQuery }) {
     });
   };
 
-  // Chat‐input state & speech hook:
-  const [query, setQuery] = useState("");
-  const [interimQuery, setInterimQuery] = useState("");
-  const { listening, supported, permission, start, stop } = useSpeechInput({
-    onResult: (transcript, isFinal) => {
-      if (isFinal) {
-        setQuery((q) => q + " " + transcript);
-        setInterimQuery("");
-      } else {
-        setInterimQuery(transcript);
-      }
-    },
-  });
-  const micDisabled = !supported || permission === "denied";
-  const inputRef = useRef(null);
+  // Removed AI Chat functionality
 
-  const handleHomeSubmit = (e) => {
-    e.preventDefault();
-    const trimmed = query.trim();
-    if (!trimmed) return;
-    // open the AIChatTab and pass the initialQuery in its data
-    addTab("AIChatTab", {
-      title: "Kartavya's AI Companion",
-    });
-    sendQuery(trimmed);
-    // setQuery(trimmed);
-    setQuery("");
-    setInterimQuery("");
-  };
+  // Wipe Animation Refs
+  const heroSectionRef = useRef(null);
+  const profileContainerRef = useRef(null);
+  const artisticMaskRef = useRef(null);
 
   useEffect(() => {
     const updateScale = () => {
@@ -157,7 +134,40 @@ function HomePage({ isBatterySavingOn, scrolled, addTab, sendQuery }) {
 
     updateScale();
     window.addEventListener("resize", updateScale);
-    return () => window.removeEventListener("resize", updateScale);
+
+    // Wipe Animation Logic
+    const heroSection = heroSectionRef.current;
+    const profileContainer = profileContainerRef.current;
+    const artisticMask = artisticMaskRef.current;
+
+    const handleMouseMove = (e) => {
+      if (!profileContainer || !artisticMask) return;
+      const rect = profileContainer.getBoundingClientRect();
+      let x = e.clientX - rect.left;
+
+      // Clamp the value
+      if (x < 0) x = 0;
+      if (x > rect.width) x = rect.width;
+
+      artisticMask.style.width = `${x}px`;
+    };
+
+    const handleMouseLeave = () => {
+      if (artisticMask) artisticMask.style.width = "0px";
+    };
+
+    if (heroSection) {
+      heroSection.addEventListener("mousemove", handleMouseMove);
+      heroSection.addEventListener("mouseleave", handleMouseLeave);
+    }
+
+    return () => {
+      window.removeEventListener("resize", updateScale);
+      if (heroSection) {
+        heroSection.removeEventListener("mousemove", handleMouseMove);
+        heroSection.removeEventListener("mouseleave", handleMouseLeave);
+      }
+    };
   }, []);
 
   return (
@@ -202,65 +212,41 @@ function HomePage({ isBatterySavingOn, scrolled, addTab, sendQuery }) {
                 backgroundAttachment: "fixed",
                 backgroundPosition: "center",
                 backgroundSize: "cover",
-                // opacity,
-                scale,
-                filter: `blur(${appliedBlur}px)`,
-                transformOrigin: "top top",
-                zIndex: 0,
-                willChange: "transform, filter",
-                transform: "translateZ(0)",
               }
           }
-        />
+        ></motion.div>
       </div>
-      <section className="homepage-container" id="home">
-        <div
-          className="container"
-        // style={{ zoom: "80%", height: "calc(100vh -52px)" }}
-        >
+
+      <section className="homepage-container" id="home" ref={heroSectionRef}>
+        <div className="container">
           <div className="home-div">
-            <div className="home-row" style={{ zIndex: 100000 }}>
+            <div className="home-row">
+              {/* Wipe Animation Profile Picture */}
               <motion.div
-                className={`profile-picture-container`}
-                variants={isBatterySavingOn ? {} : zoomIn(0)}
-                initial="hidden"
-                drag
-                dragConstraints={{ left: 0, right: 0, top: 0, bottom: 0 }}
-                dragElastic={0.3}
-                dragTransition={{
-                  bounceStiffness: 250,
-                  bounceDamping: 15,
-                }}
-                transition={{ scale: { delay: 0, type: "spring" } }}
-                whileTap={isBatterySavingOn ? {} : { scale: 1.1 }}
-                whileInView={"show"}
+                initial={{ opacity: 0, scale: 0.5 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
+                className="profile-image-container"
+                ref={profileContainerRef}
               >
-                <animated.img
-                  src={`${process.env.PUBLIC_URL}/Kartavya.webp`}
-                  alt="Profile"
-                  className={`profile-picture img-circle${frames[frameIndex]}`}
-                  draggable="false"
-                  style={{
-                    boxShadow,
-                    transform: isBatterySavingOn
-                      ? {}
-                      : isHovering
-                        ? `translate3d(${mousePosition.x}px, ${mousePosition.y}px, 0) scale3d(1.03, 1.03, 1.03)`
-                        : "translate3d(0px, 0px, 0) scale3d(1, 1, 1)",
-                    transition: "transform 0.1s ease-out",
-                    height: "250px !important",
-                    width: "250px !important",
-                  }}
-                  onMouseMove={handleMouseMove}
-                  onMouseEnter={handleMouseEnter}
-                  onMouseLeave={handleMouseLeave}
-                  onClick={() => {
-                    handleClick();
-                    handleProfileClick();
-                  }}
+                {/* Normal Image (Background) */}
+                <img
+                  src={`${process.env.PUBLIC_URL}/Kartavya.webp`} // Placeholder until user adds profile-normal.jpg
+                  alt="Anany Singh"
+                  className="profile-img normal"
                 />
+
+                {/* Artistic Image (Foreground with Mask) */}
+                <div className="artistic-mask" ref={artisticMaskRef}>
+                  <img
+                    src={`${process.env.PUBLIC_URL}/Kartavya.webp`} // Placeholder until user adds profile-artistic.jpg
+                    alt="Anany Singh Artistic"
+                    className="profile-img artistic"
+                  />
+                </div>
               </motion.div>
             </div>
+
             <div className="home-row info" style={{ zIndex: 99999 }}>
               <motion.h1
                 className="name"
@@ -299,137 +285,6 @@ function HomePage({ isBatterySavingOn, scrolled, addTab, sendQuery }) {
                 </em>
               </motion.div>
 
-              <motion.form
-                initial={{ opacity: 0, scale: 0 }}
-                drag
-                dragConstraints={{ left: 0, right: 0, top: 0, bottom: 0 }}
-                dragElastic={0.3}
-                dragTransition={{
-                  bounceStiffness: 250,
-                  bounceDamping: 15,
-                }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0, scale: { delay: 0, type: "ease" } }}
-                whileHover={{
-                  scale: 1.01,
-                  transition: { delay: 0, type: "easeInOut" },
-                }}
-                whileTap={{
-                  scale: 1,
-                  transition: { delay: 0, type: "easeInOut" },
-                }}
-                onSubmit={handleHomeSubmit}
-                className="home-input-form glass"
-              >
-                <motion.div
-                  className="mic-btn-container"
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.9 }}
-                  drag
-                  dragConstraints={{ left: 0, right: 0, top: 0, bottom: 0 }}
-                  dragElastic={0.3}
-                  dragTransition={{
-                    bounceStiffness: 250,
-                    bounceDamping: 15,
-                  }}
-                  transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                >
-                  <button
-                    type="button"
-                    className={`mic-btn glass ${listening ? "active" : ""}`}
-                    // onMouseDown={start}
-                    // onMouseUp={stop}
-                    // onTouchStart={start}
-                    // onTouchEnd={stop}
-                    onClick={(e) => {
-                      e.preventDefault();
-                      addTab("AIChatTab", { title: "Kartavya's AI Companion" });
-                    }}
-                    aria-label={"Open AI Companion Tab"}
-                  >
-                    <i className={`fas fa-expand`} />
-                  </button>
-                </motion.div>
-                <motion.div
-                  className="mic-btn-container"
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.9 }}
-                  drag
-                  dragConstraints={{ left: 0, right: 0, top: 0, bottom: 0 }}
-                  dragElastic={0.3}
-                  dragTransition={{
-                    bounceStiffness: 250,
-                    bounceDamping: 15,
-                  }}
-                  transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                >
-                  <motion.button
-                    type="button"
-                    className={`mic-btn glass ${listening ? "active" : ""}`}
-                    // onMouseDown={start}
-                    // onMouseUp={stop}
-                    // onTouchStart={start}
-                    // onTouchEnd={stop}
-                    style={
-                      listening
-                        ? { background: "#fcbc1d" }
-                        : { background: "#5a6268" }
-                    }
-                    whileHover={{ background: "#fcbc1d" }}
-                    onClick={() => (listening ? stop() : start())}
-                    aria-label={listening ? "Click to stop" : "Click to talk"}
-                    disabled={micDisabled}
-                  >
-                    <i
-                      style={
-                        listening ? { color: "#212529" } : { color: "#edeeef" }
-                      }
-                      className={`fa fa-microphone${listening ? "" : "-slash"}`}
-                    />
-                  </motion.button>
-                </motion.div>
-                <input
-                  ref={inputRef}
-                  type="text"
-                  value={listening ? interimQuery : query}
-                  onChange={(e) => setQuery(e.target.value)}
-                  placeholder={`${listening ? "Transcribing..." : "Ask My AI Companion!"
-                    }`}
-                  onKeyDown={(e) => {
-                    // Enter=send, Shift+Enter=newline
-                    if (e.key === "Enter" && !e.shiftKey) {
-                      e.preventDefault();
-                      handleHomeSubmit(e);
-                    }
-                  }}
-                  className="query-input"
-                />
-                <motion.button
-                  type="submit"
-                  className="send-float-btn"
-                  animate={{ translateY: "-50%" }}
-                  drag
-                  dragConstraints={{ left: 0, right: 0, top: 0, bottom: 0 }}
-                  dragElastic={0.3}
-                  dragTransition={{
-                    bounceStiffness: 250,
-                    bounceDamping: 15,
-                  }}
-                  whileHover={{
-                    scale: 1.1,
-                    translateY: "-50%",
-                    transition: { delay: 0 },
-                  }}
-                  whileTap={{
-                    scale: 0.9,
-                    translateY: "-50%",
-                    transition: { delay: 0 },
-                  }}
-                >
-                  <motion.i drag="false" className={`fa fa-arrow-up`} />
-                </motion.button>
-              </motion.form>
-
               {/* Styled "Enter Portfolio" Button */}
               <motion.div
                 className="enter-button-motioned"
@@ -444,13 +299,6 @@ function HomePage({ isBatterySavingOn, scrolled, addTab, sendQuery }) {
                   scale: 1,
                   transition: { scale: { delay: 0, type: "spring" } },
                 }}
-              // drag="false"
-              // dragConstraints={{ left: 0, right: 0, top: 0, bottom: 0 }}
-              // dragElastic={0.3}
-              // dragTransition={{
-              //   bounceStiffness: 250,
-              //   bounceDamping: 15,
-              // }}
               >
                 <StyledButton
                   onClick={(e) => {

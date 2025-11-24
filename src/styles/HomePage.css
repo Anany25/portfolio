@@ -18,18 +18,25 @@
 /* When the .query-input is focused or active, make its placeholder transparent */
 .query-input:focus::placeholder,
 .query-input:active::placeholder,
-.query-input:focus:-ms-input-placeholder,      /* IE 10+ */
+.query-input:focus:-ms-input-placeholder,
+/* IE 10+ */
 .query-input:active:-ms-input-placeholder,
-.query-input:focus::-ms-input-placeholder,     /* Edge */
+.query-input:focus::-ms-input-placeholder,
+/* Edge */
 .query-input:active::-ms-input-placeholder,
-.query-input:focus::-moz-placeholder,          /* Firefox 19+ */
+.query-input:focus::-moz-placeholder,
+/* Firefox 19+ */
 .query-input:active::-moz-placeholder,
-.query-input:focus:-moz-placeholder,           /* Firefox 4–18 */
+.query-input:focus:-moz-placeholder,
+/* Firefox 4–18 */
 .query-input:active:-moz-placeholder,
-.query-input:focus::-webkit-input-placeholder, /* Chrome/Safari/WebKit */
+.query-input:focus::-webkit-input-placeholder,
+/* Chrome/Safari/WebKit */
 .query-input:active::-webkit-input-placeholder {
-  opacity: 0.3; /* or visibility: hidden; */
-  transition: opacity 0.2s ease; /* optional fade */
+  opacity: 0.3;
+  /* or visibility: hidden; */
+  transition: opacity 0.2s ease;
+  /* optional fade */
 }
 
 .home-input-form {
@@ -46,12 +53,10 @@
     rgba(80, 80, 80, 0.6),
     rgba(50, 50, 50, 0.4)
   ); */
-  background: linear-gradient(
-    135deg,
-    rgba(33, 37, 41, 0.85) 0%,
-    rgba(33, 37, 41, 0.65) 50%,
-    rgba(33, 37, 41, 0.85) 100%
-  ) !important;
+  background: linear-gradient(135deg,
+      rgba(33, 37, 41, 0.85) 0%,
+      rgba(33, 37, 41, 0.65) 50%,
+      rgba(33, 37, 41, 0.85) 100%) !important;
   backdrop-filter: blur(6px) !important;
   -webkit-backdrop-filter: blur(10px) !important;
 }
@@ -74,21 +79,25 @@
 .home-input-form.input-query:active .query-input::placeholder {
   opacity: 0;
 }
+
 .home-input-form .query-input::-webkit-input-placeholder {
   color: #edeeef;
   opacity: 0.6;
   font-size: large;
 }
+
 .home-input-form .query-input::-moz-placeholder {
   color: #edeeef;
   opacity: 0.6;
   font-size: large;
 }
+
 .home-input-form .query-input:-ms-input-placeholder {
   color: #edeeed;
   opacity: 0.6;
   font-size: large;
 }
+
 .home-input-form .query-input:-moz-placeholder {
   color: #edeeef;
   opacity: 0.6;
@@ -96,24 +105,29 @@
 }
 
 .homepage-bg-wrapper {
-  position: absolute; /* or fixed if you want it anchored to the viewport */
+  position: absolute;
+  /* or fixed if you want it anchored to the viewport */
   top: 0;
   left: 0;
   width: 100%;
   height: 100vh;
-  overflow: hidden; /* This ensures that scaling won't show outside bounds */
-  z-index: 2; /* Ensure the background stays behind other content */
+  overflow: hidden;
+  /* This ensures that scaling won't show outside bounds */
+  z-index: 2;
+  /* Ensure the background stays behind other content */
 }
 
 .homepage-bg {
-  position: absolute; /* Fixed position for background */
+  position: absolute;
+  /* Fixed position for background */
   top: 0;
   left: 0;
   width: 100%;
   max-width: 100%;
   height: 100vh;
   min-height: 100vh;
-  z-index: 1; /* Ensure it stays behind all content */
+  z-index: 1;
+  /* Ensure it stays behind all content */
   /* background: linear-gradient(
       to bottom,
       rgba(0, 0, 0, 0.4),
@@ -147,7 +161,8 @@
 
 .home-div {
   position: relative;
-  z-index: 1; /* Lower than .space-explorer */
+  z-index: 1;
+  /* Lower than .space-explorer */
   width: 100%;
   height: calc(100svh - 52px);
 
@@ -174,24 +189,68 @@
   justify-content: space-evenly;
 }
 
-.profile-picture {
-  background-clip: content-box;
-  width: 250px !important;
-  height: 250px !important;
-  border-radius: 100%;
-  border: 8px solid #edeeef;
-  filter: grayscale(95%) brightness(0.9) contrast(1) saturate(0.6)
-    hue-rotate(-30deg);
+/* Wipe Animation Styles */
+.profile-image-container {
   position: relative;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
   overflow: hidden;
-  transition: transform 0.7s ease, filter 0.7s ease;
+  box-shadow: 0 0 40px rgba(99, 102, 241, 0.3);
+  border: 4px solid transparent;
+  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+  background-clip: padding-box;
+  margin-bottom: 2rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.profile-picture:hover {
-  filter: grayscale(0%);
-  transform: scale(1.1) rotate(2deg);
-  border: 8px solid #fcbc1d;
+.profile-image-container:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 60px rgba(99, 102, 241, 0.5);
 }
+
+.profile-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.profile-img.normal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  filter: grayscale(100%);
+  /* Start black and white */
+  transition: filter 0.3s ease;
+}
+
+.profile-image-container:hover .profile-img.normal {
+  filter: grayscale(0%);
+  /* Color on hover if not wiped */
+}
+
+.artistic-mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  overflow: hidden;
+  transition: width 0.05s linear;
+  border-right: 2px solid rgba(255, 255, 255, 0.8);
+  /* Separator line */
+}
+
+.profile-img.artistic {
+  width: 300px;
+  /* Must match container width */
+  height: 300px;
+  /* Must match container height */
+  max-width: none;
+  filter: contrast(1.2) saturate(1.2);
+}
+
 /* 
 .frame1 {
   border: 8px solid #fcbf49;
@@ -246,6 +305,7 @@
   align-items: center;
   width: 100%;
 }
+
 .changing-text {
   z-index: 50;
   inset: 0;
@@ -259,11 +319,9 @@
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  background-image: linear-gradient(
-    to bottom,
-    rgba(237, 238, 239, 1),
-    rgba(237, 238, 239, 0.95)
-  );
+  background-image: linear-gradient(to bottom,
+      rgba(237, 238, 239, 1),
+      rgba(237, 238, 239, 0.95));
   text-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
   font-family: "Montserrat", sans-serif;
   width: 100%;
@@ -276,10 +334,12 @@
 }
 
 @keyframes blink {
+
   0%,
   100% {
     opacity: 0.6;
   }
+
   50% {
     opacity: 0;
   }
@@ -311,21 +371,27 @@
   .home-input-form .query-input {
     padding-right: 55px !important;
   }
+
   .name {
     font-size: 2.25rem;
   }
+
   .home-input-form .query-input::placeholder {
     font-size: medium;
   }
+
   .home-input-form .query-input::-webkit-input-placeholder {
     font-size: medium;
   }
+
   .home-input-form .query-input::-moz-placeholder {
     font-size: medium;
   }
+
   .home-input-form .query-input:-ms-input-placeholder {
     font-size: medium;
   }
+
   .home-input-form .query-input:-moz-placeholder {
     font-size: medium;
   }
