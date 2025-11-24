@@ -43,34 +43,20 @@ const Loading = ({ isBatterySavingOn, setIsBatterySavingOn, onComplete }) => {
   useEffect(() => {
     const checkStatus = async () => {
       try {
-        // const backendStatus = await pingBackend();
-        const databaseStatus = await pingDatabase();
-        const backendStatus = databaseStatus;
+        // No backend - skip API calls
+        const backendStatus = true;
+        const databaseStatus = true;
         setStatus({ backend: backendStatus, database: databaseStatus });
         if (backendStatus && databaseStatus) {
           setLoaded(true);
           // Start must-load images preloading (these block loading completion)
           async function preloadMustLoadImages() {
             try {
-              const response = await fetch(
-                `${process.env.REACT_APP_API_URI}/must-load-images`
-              );
-              const urls = await response.json();
-              // console.log("Must-load Image URLs: ", urls);
-
-              // For each must-load image, create and append a preload link.
-              urls.forEach((url) => {
-                const link = document.createElement("link");
-                link.rel = "preload";
-                link.as = "image";
-                link.href = url;
-                document.head.appendChild(link);
-              });
-
-              // Mark images as ready (we assume the browser will handle preloading).
+              // Skip backend image preloading - no backend available
+              // Mark images as ready immediately
               setMustLoadImageStatus({
-                loaded: urls.length,
-                total: urls.length,
+                loaded: 0,
+                total: 0,
                 error: false,
               });
               setImagesReady(true);
@@ -103,9 +89,9 @@ const Loading = ({ isBatterySavingOn, setIsBatterySavingOn, onComplete }) => {
       ).matches;
       const isLowBattery = navigator.getBattery
         ? await navigator
-            .getBattery()
-            .then((battery) => battery.level < 0.2)
-            .catch(() => false)
+          .getBattery()
+          .then((battery) => battery.level < 0.2)
+          .catch(() => false)
         : false;
       const hardwareConcurrency = navigator.hardwareConcurrency || 0;
       const lowPerformanceDevice = hardwareConcurrency < 4;
@@ -259,8 +245,8 @@ const Loading = ({ isBatterySavingOn, setIsBatterySavingOn, onComplete }) => {
             {isBatterySavingOn
               ? "Reducing Animations Due to Weak Device ❌"
               : "ontouchstart" in window || navigator.maxTouchPoints > 0
-              ? "Reducing Animations for Touch Devices ✅"
-              : "Amplifying Animations ✅"}
+                ? "Reducing Animations for Touch Devices ✅"
+                : "Amplifying Animations ✅"}
           </motion.p>
           <motion.p
             initial={{ opacity: 0 }}
