@@ -54,7 +54,7 @@ const PauseTimer = ({
 
     const handleHover = () => {
       setIsVisible(true); // Show PauseTimer
-      glideRef.current.pause(); // Pause Glide autoplay
+      if (glideRef.current) glideRef.current.pause(); // Pause Glide autoplay
       setCountdown(5.0); // Reset countdown to 5.00
       isHovered = true;
 
@@ -65,13 +65,13 @@ const PauseTimer = ({
       hoverTimeout = setTimeout(() => {
         setIsVisible(false); // Hide PauseTimer
         isHovered = false;
-        glideRef.current.play(); // Resume Glide autoplay
+        if (glideRef.current) glideRef.current.play(); // Resume Glide autoplay
       }, 11000);
     };
 
     const handleUnhover = () => {
       isHovered = false;
-      glideRef.current.play(); // Resume Glide autoplay
+      if (glideRef.current) glideRef.current.play(); // Resume Glide autoplay
       startTime = performance.now(); // Reset start time
     };
 
@@ -276,43 +276,37 @@ const SkillSection = ({ isBatterySavingOn }) => {
                             alt=""
                             className={`skill-card-icon`}
                             style={{
-                              boxShadow: `0 0 ${
-                                window.innerWidth > 768 ? 7.5 : 2.5
-                              }px ${
-                                proficiencyColor[skill.proficiency] ||
+                              boxShadow: `0 0 ${window.innerWidth > 768 ? 7.5 : 2.5
+                                }px ${proficiencyColor[skill.proficiency] ||
                                 proficiencyColor.default
-                              }, 
-                0 0 ${window.innerWidth > 768 ? 12.5 : 5}px ${
-                                proficiencyColor[skill.proficiency] ||
+                                }, 
+                0 0 ${window.innerWidth > 768 ? 12.5 : 5}px ${proficiencyColor[skill.proficiency] ||
                                 proficiencyColor.default
-                              }`,
+                                }`,
                             }}
                             variants={
                               isBatterySavingOn
                                 ? {}
                                 : fadeIn(
-                                    "right",
-                                    50, // Reduced size for a more subtle animation
-                                    skillIndex * 0.075, // Stagger delay for each skill
-                                    0.4 // Shorter duration for smoother animations
-                                  )
+                                  "right",
+                                  50, // Reduced size for a more subtle animation
+                                  skillIndex * 0.075, // Stagger delay for each skill
+                                  0.4 // Shorter duration for smoother animations
+                                )
                             }
                             initial="hidden"
                             whileInView="show"
                             exit="hidden"
                             animate={{
                               boxShadow: [
-                                `0 0 ${window.innerWidth > 768 ? 7.5 : 2.5}px ${
-                                  proficiencyColor[skill.proficiency] ||
-                                  proficiencyColor.default
+                                `0 0 ${window.innerWidth > 768 ? 7.5 : 2.5}px ${proficiencyColor[skill.proficiency] ||
+                                proficiencyColor.default
                                 }`,
-                                `0 0 ${window.innerWidth > 768 ? 12.5 : 5}px ${
-                                  proficiencyColor[skill.proficiency] ||
-                                  proficiencyColor.default
+                                `0 0 ${window.innerWidth > 768 ? 12.5 : 5}px ${proficiencyColor[skill.proficiency] ||
+                                proficiencyColor.default
                                 }`,
-                                `0 0 ${window.innerWidth > 768 ? 7.5 : 2.5}px ${
-                                  proficiencyColor[skill.proficiency] ||
-                                  proficiencyColor.default
+                                `0 0 ${window.innerWidth > 768 ? 7.5 : 2.5}px ${proficiencyColor[skill.proficiency] ||
+                                proficiencyColor.default
                                 }`,
                               ],
                               transition: {
@@ -329,11 +323,11 @@ const SkillSection = ({ isBatterySavingOn }) => {
                               isBatterySavingOn
                                 ? {}
                                 : fadeIn(
-                                    "left",
-                                    50, // Reduced size for a more subtle animation
-                                    skillIndex * 0.075, // Match stagger delay
-                                    0.4 // Match duration for consistent animations
-                                  )
+                                  "left",
+                                  50, // Reduced size for a more subtle animation
+                                  skillIndex * 0.075, // Match stagger delay
+                                  0.4 // Match duration for consistent animations
+                                )
                             }
                             initial="hidden"
                             whileInView="show"

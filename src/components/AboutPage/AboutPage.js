@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useEffect } from "react";
 import { motion } from "framer-motion";
 import { zoomIn, fadeIn } from "../../services/variants";
 import { styled } from "@stitches/react";
@@ -115,18 +115,19 @@ function AboutPage({ isBatterySavingOn, isWindowModalVisible, addTab }) {
                 whileInView="show"
                 exit="hidden"
               >
-                <span className="about-name">Kartavya Singh</span>
+                <span className="about-name">Anany K. Singh</span>
                 <p className="about-role">
-                  UC '26, B.S & M.Eng in Computer Science, Full Stack Software
-                  Developer
+                  AI Engineer | MS in AI @ UB | Ex-UGenome AI
                 </p>
                 <p className="about-description">
-                  I'm Kartavya Singh, a Computer Science senior at the
-                  University of Cincinnati, passionate about creating impactful
-                  AI solutions, experienced in Full Stack Development. My
-                  journey is driven by curiosity and a commitment to continuous
-                  learning through hackathons, personal projects, and real-world
-                  applications.
+                  AI Engineer with hands-on experience designing and deploying
+                  scalable systems in natural language processing, computer
+                  vision, and deep learning. Skilled in LLMs, Retrieval-Augmented
+                  Generation (RAG), and MLOps, with proven ability to build and
+                  optimize end-to-end AI pipelines from data preprocessing and
+                  model training to deployment. Passionate about advancing
+                  Generative AI, Reinforcement Learning, and Prompt Engineering to
+                  drive real-world innovation.
                 </p>
               </motion.div>
               <motion.h2

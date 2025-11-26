@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import { zoomIn, fadeIn } from "../../services/variants";
+import { fadeIn } from "../../services/variants";
 import { motion, AnimatePresence } from "framer-motion";
 import { styled, keyframes } from "@stitches/react";
 import Footer from "../SpecialComponents/Footer";
@@ -9,7 +9,7 @@ import "../../styles/ContactPage.css";
 function ContactPage({ isBatterySavingOn, addTab }) {
   const form = useRef();
   const [isTouchDevice, setIsTouchDevice] = useState(false);
-  const [isSent, setIsSent] = useState(null); // null for no status, true for success, false for error
+  // const [isSent, setIsSent] = useState(null); // null for no status, true for success, false for error
   const containerRef = useRef(null);
   // 1. Disable state and Toast state
   const [isDisabled, setIsDisabled] = useState(false);
@@ -143,12 +143,8 @@ function ContactPage({ isBatterySavingOn, addTab }) {
                 }
               >
                 Email:{" "}
-                <a href="mailto:singhk6@mail.uc.edu" className="lead">
-                  singhk6@mail.uc.edu
-                </a>{" "}
-                ||{" "}
-                <a href="mailto:kartavya.singh17@yahoo.com" className="lead">
-                  kartavya.singh17@yahoo.com
+                <a href="mailto:ananykumarsingh25@gmail.com" className="lead">
+                  ananykumarsingh25@gmail.com
                 </a>
               </motion.h5>
               <motion.h5
@@ -160,8 +156,8 @@ function ContactPage({ isBatterySavingOn, addTab }) {
                 }
               >
                 Phone:{" "}
-                <a href="tel:5138377683" className="lead">
-                  513-837-7683
+                <a href="tel:7165732402" className="lead">
+                  +1 (716) 573-2402
                 </a>
               </motion.h5>
               <br />
@@ -311,12 +307,7 @@ function ContactPage({ isBatterySavingOn, addTab }) {
                   <StyledButton type="submit" disabled={isDisabled}>
                     <ButtonShadow />
                     <ButtonEdge />
-                    <ButtonLabel isSent={isSent}>
-                      {/* {isSent === true
-                        ? "Message Sent ☑"
-                        : isSent === false
-                        ? "Failed to Send ☒"
-                        : "Send Message"} */}
+                    <ButtonLabel>
                       Send Message
                     </ButtonLabel>
                   </StyledButton>
@@ -325,25 +316,15 @@ function ContactPage({ isBatterySavingOn, addTab }) {
             </motion.div>
           </div>
           <Footer isBatterySavingOn={isBatterySavingOn} addTab={addTab} />
-        </motion.section>
-      </AnimatePresence>
+        </motion.section >
+      </AnimatePresence >
     </>
   );
 }
 
 export default ContactPage;
 
-const fillGreen = keyframes({
-  "0%": { backgroundColor: "#edeeef", color: "#212529" }, // Initial yellow color
-  "50%": { backgroundColor: "lightseagreen", color: "#212529" }, // Success green with white text
-  "100%": { backgroundColor: "#edeeef", color: "#212529" },
-});
 
-const fillRed = keyframes({
-  "0%": { backgroundColor: "#edeeef", color: "#212529" }, // Initial yellow color
-  "50%": { backgroundColor: "lightcoral", color: "#212529" }, // Error red with white text
-  "100%": { backgroundColor: "#edeeef", color: "#212529" }, // Initial yellow color
-});
 
 // Styled Components for Button Parts
 const ButtonPart = styled("span", {
@@ -388,16 +369,16 @@ const ButtonLabel = styled("span", {
     "transform 250ms ease-out, background-color 0.3s ease, color 0.3s ease",
 
   // Conditional animation based on isSent state
-  variants: {
-    isSent: {
-      true: {
-        animation: `${fillGreen}  3s ease-in-out forwards`, // Apply green fill on success
-      },
-      false: {
-        animation: `${fillRed}  3s ease-in-out forwards`, // Apply red fill on error
-      },
-    },
-  },
+  // variants: {
+  //   isSent: {
+  //     true: {
+  //       animation: `${fillGreen}  3s ease-in-out forwards`, // Apply green fill on success
+  //     },
+  //     false: {
+  //       animation: `${fillRed}  3s ease-in-out forwards`, // Apply red fill on error
+  //     },
+  //   },
+  // },
 
   "&:hover": {
     backgroundColor: "#fcbc1d",

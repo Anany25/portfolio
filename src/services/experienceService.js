@@ -1,27 +1,22 @@
-import axios from "axios";
+const experiences = [
+  {
+    experienceTitle: "AI Software Engineer",
+    experienceSubTitle: "UGenome AI",
+    experienceTimeline: "Oct 2025 - Present",
+    experienceTagline:
+      "Developing a conversational AI platform for personalized genomics.",
+    experienceDescription:
+      "Developing a conversational AI platform for personalized genomics, enabling users to interpret and explore genomic data through an LLM-powered chatbot. Implementing a Retrieval-Augmented Generation (RAG) pipeline leveraging Knowledge Graphs and vector databases to deliver precise, context-aware insights. Building an automated extraction and structuring workflow for bioinformatics datasets to populate a reasoning-ready Knowledge Graph. Deploying the production-scale system on Microsoft Azure using PyTorch, LangChain, and Azure AI Foundry, ensuring reliability and scalability.",
+    experienceImages: [`${process.env.PUBLIC_URL}/experience-images/ugenome.png?v=${new Date().getTime()}`],
+    experienceLink: "ugenome-ai",
+    likesCount: 0,
+  },
+];
 
-const API_URL = `${process.env.REACT_APP_API_URI}`;
-
-// Fetch all experiences
 export const fetchExperiences = async () => {
-  try {
-    const response = await axios.get(`${API_URL}/getexperiences`);
-    return response.data;
-  } catch (error) {
-    console.error("Error fetching experiences:", error);
-    throw error;
-  }
+  return experiences;
 };
 
-// Fetch a specific experience by experienceLink
 export const fetchExperienceByLink = async (experienceLink) => {
-  try {
-    const response = await axios.get(
-      `${API_URL}/getexperiences/${experienceLink}`
-    );
-    return response.data;
-  } catch (error) {
-    console.error("Error fetching experience by link:", error);
-    throw error;
-  }
+  return experiences.find((exp) => exp.experienceLink === experienceLink);
 };

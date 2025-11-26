@@ -1,10 +1,8 @@
 import React, { useState, useEffect, useRef, memo } from "react";
 import { motion } from "framer-motion";
-import { FaCrown } from "react-icons/fa";
 import { zoomIn } from "../../services/variants";
 import { styled } from "@stitches/react";
 import { fetchProjects } from "../../services/projectService";
-import LikeButton from "../SpecialComponents/LikeButton";
 import "../../styles/ProjectsListView.css";
 
 function ProjectsListView({ addTab, isBatterySavingOn, showFeatured }) {
@@ -133,9 +131,8 @@ function ProjectsListView({ addTab, isBatterySavingOn, showFeatured }) {
       }
 
       // 7) set container padding-bottom
-      containerEl.style.paddingBottom = `${
-        baseOffset - titleHeight - titleMarginBottom - containerMarginTop
-      }px`;
+      containerEl.style.paddingBottom = `${baseOffset - titleHeight - titleMarginBottom - containerMarginTop
+        }px`;
       if (titleEl) {
         // If you want the title to stay above stacked cards, you can manipulate it here
         titleEl.style.top = `${52 + 2 * titleMarginTop}px`; // optional
@@ -271,8 +268,8 @@ function ProjectsListView({ addTab, isBatterySavingOn, showFeatured }) {
                 transform: isBatterySavingOn
                   ? ""
                   : isHovering
-                  ? `translate3d(${mousePosition.x}px, ${mousePosition.y}px, 0)`
-                  : "translate3d(0, 0, 0)",
+                    ? `translate3d(${mousePosition.x}px, ${mousePosition.y}px, 0)`
+                    : "translate3d(0, 0, 0)",
                 transition: isBatterySavingOn
                   ? "none"
                   : "transform 0.1s ease-out",
@@ -281,32 +278,11 @@ function ProjectsListView({ addTab, isBatterySavingOn, showFeatured }) {
               {hoveredCard === index && (
                 <div className="hover-tooltip">{project.projectTitle}</div>
               )}
-              {/* Like Button positioned at the top-right corner */}
-              <div
-                style={{
-                  position: "absolute",
-                  top: "10px",
-                  right: "10px",
-                  zIndex: 100,
-                }}
-              >
-                <LikeButton
-                  type="Project"
-                  title={project.projectTitle}
-                  onLikeSuccess={() =>
-                    setProjects((prevProjects) =>
-                      prevProjects.map((p) =>
-                        p.projectTitle === project.projectTitle
-                          ? { ...p, likesCount: (p.likesCount || 0) + 1 }
-                          : p
-                      )
-                    )
-                  }
-                />
-              </div>
+
               <div
                 className="card-content"
                 style={{
+                  width: "100%",
                   height: "fit-content",
                   transform: isHovering
                     ? `translate3d(${-mousePosition.x}px, ${-mousePosition.y}px, 0)`
@@ -318,14 +294,7 @@ function ProjectsListView({ addTab, isBatterySavingOn, showFeatured }) {
               >
                 {/* {project.featured && <FaCrown className="featured-tag" />} */}
 
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: `${
-                      window.innerWidth > 768 ? "row" : "column-reverse"
-                    }`,
-                  }}
-                >
+                <div className="project-content-wrapper">
                   <div className="project-info" id={project.projectLink}>
                     <div className="project-header">
                       {project.projectSubTitle &&
@@ -339,11 +308,9 @@ function ProjectsListView({ addTab, isBatterySavingOn, showFeatured }) {
                     </div>
                     <a
                       className="project-title"
-                      href={`#${project.projectLink}`}
-                      onClick={(e) => {
-                        e.preventDefault();
-                        scrollToCard(index);
-                      }}
+                      href={project.githubLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
                     >
                       {project.projectTitle}
                     </a>
@@ -357,7 +324,7 @@ function ProjectsListView({ addTab, isBatterySavingOn, showFeatured }) {
 
                     <motion.div
                       className="learn-button-motioned"
-                      onClick={() => addTab("Project", project)}
+                      onClick={() => window.open(project.githubLink, "_blank")}
                       variants={zoomIn(1)}
                       initial="hidden"
                       animate="show"
@@ -384,22 +351,6 @@ function ProjectsListView({ addTab, isBatterySavingOn, showFeatured }) {
                     }}
                   ></div>
                 </div>
-
-                {/* Like Count displayed at bottom-right if likesCount > 0 */}
-                {project.likesCount > 0 && (
-                  <div
-                    style={{
-                      position: "absolute",
-                      bottom: "5px",
-                      right: "10px",
-                      color: "#edeeef",
-                      fontSize: "0.8em",
-                      zIndex: 150,
-                    }}
-                  >
-                    Likes: {project.likesCount}
-                  </div>
-                )}
               </div>
             </motion.div>
           );

@@ -2,26 +2,20 @@ import React, { useState, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { zoomIn } from "../../services/variants";
 import Background from "./Background";
-import InvolvementTabPage from "./InvolvementTabPage";
 import CareerTabPage from "./CareerTabPage";
-import HonorsTabPage from "./HonorsTabPage";
+import CertificatesTabPage from "./CertificatesTabPage";
 import "../../styles/ExperiencePage.css";
 
 const tabs = [
-  {
-    title: "Involvement",
-    icon: <i className="tab-icon fa-solid fa-handshake" />,
-    component: InvolvementTabPage,
-  },
   {
     title: "Career",
     icon: <i className="tab-icon fa-solid fa-briefcase" />,
     component: CareerTabPage,
   },
   {
-    title: "Honors",
-    icon: <i className="tab-icon fa-solid fa-trophy" />,
-    component: HonorsTabPage,
+    title: "Certificates",
+    icon: <i className="tab-icon fa-solid fa-certificate" />,
+    component: CertificatesTabPage,
   },
 ];
 
@@ -63,7 +57,7 @@ const ExperiencePage = ({
   isBatterySavingOn,
   isWindowModalVisible,
 }) => {
-  const [selectedTab, setSelectedTab] = useState(tabs[1]); // Default tab is "Career"
+  const [selectedTab, setSelectedTab] = useState(tabs[0]); // Default tab is "Career"
   const [ActiveComponent, setActiveComponent] = useState(
     () => selectedTab.component
   );
@@ -117,16 +111,15 @@ const ExperiencePage = ({
                 className="tab-highlight"
                 key={`tab-${selectedTab}`}
                 custom={tabs.indexOf(selectedTab)}
-                // variants={tabHighlightVariants}
-                // animate="animate"
-                // initial="initial"
+              // variants={tabHighlightVariants}
+              // animate="animate"
+              // initial="initial"
               />
               {tabs.map((tab) => (
                 <motion.button
                   key={tab.title}
-                  className={`tab-button${
-                    selectedTab.title === tab.title ? " active" : ""
-                  }`}
+                  className={`tab-button${selectedTab.title === tab.title ? " active" : ""
+                    }`}
                   onClick={() => {
                     setSelectedTab(tab);
                     setActiveComponent(() => tab.component);
@@ -143,11 +136,7 @@ const ExperiencePage = ({
                   aria-label={tab.title}
                 >
                   {tab.icon}
-                  {selectedTab.title === tab.title ? (
-                    <span className="tab-text">{tab.title}</span>
-                  ) : (
-                    ""
-                  )}
+                  <span className="tab-text">{tab.title}</span>
                 </motion.button>
               ))}
             </motion.div>

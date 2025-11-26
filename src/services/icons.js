@@ -34,6 +34,9 @@ import hindi from "../assets/img/icons/hindi.svg";
 import japanese from "../assets/img/icons/japanese.svg";
 import french from "../assets/img/icons/french.svg";
 import arabic from "../assets/img/icons/arabic.png";
+import aws from "../assets/img/icons/aws.svg";
+import gcp from "../assets/img/icons/gcp.svg";
+import azure from "../assets/img/icons/azure.svg";
 
 const icons = {
   javascript,
@@ -72,6 +75,9 @@ const icons = {
   japanese,
   french,
   arabic,
+  aws,
+  gcp,
+  azure,
 };
 
 export default icons;

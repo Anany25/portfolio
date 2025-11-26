@@ -13,6 +13,7 @@ import {
 } from "framer-motion";
 import { zoomIn } from "../../services/variants";
 import "../../styles/HomePage.css";
+import WipeProfileImage from "./WipeProfileImage";
 // import ProfilePhoto from `${process.env.PUBLIC_URL}/Kartavya.webp`;
 
 function HomePage({ isBatterySavingOn, scrolled, addTab, sendQuery }) {
@@ -112,11 +113,6 @@ function HomePage({ isBatterySavingOn, scrolled, addTab, sendQuery }) {
 
   // Removed AI Chat functionality
 
-  // Wipe Animation Refs
-  const heroSectionRef = useRef(null);
-  const profileContainerRef = useRef(null);
-  const artisticMaskRef = useRef(null);
-
   useEffect(() => {
     const updateScale = () => {
       const homeRow = document.querySelector(".home-row");
@@ -135,38 +131,8 @@ function HomePage({ isBatterySavingOn, scrolled, addTab, sendQuery }) {
     updateScale();
     window.addEventListener("resize", updateScale);
 
-    // Wipe Animation Logic
-    const heroSection = heroSectionRef.current;
-    const profileContainer = profileContainerRef.current;
-    const artisticMask = artisticMaskRef.current;
-
-    const handleMouseMove = (e) => {
-      if (!profileContainer || !artisticMask) return;
-      const rect = profileContainer.getBoundingClientRect();
-      let x = e.clientX - rect.left;
-
-      // Clamp the value
-      if (x < 0) x = 0;
-      if (x > rect.width) x = rect.width;
-
-      artisticMask.style.width = `${x}px`;
-    };
-
-    const handleMouseLeave = () => {
-      if (artisticMask) artisticMask.style.width = "0px";
-    };
-
-    if (heroSection) {
-      heroSection.addEventListener("mousemove", handleMouseMove);
-      heroSection.addEventListener("mouseleave", handleMouseLeave);
-    }
-
     return () => {
       window.removeEventListener("resize", updateScale);
-      if (heroSection) {
-        heroSection.removeEventListener("mousemove", handleMouseMove);
-        heroSection.removeEventListener("mouseleave", handleMouseLeave);
-      }
     };
   }, []);
 
@@ -217,34 +183,13 @@ function HomePage({ isBatterySavingOn, scrolled, addTab, sendQuery }) {
         ></motion.div>
       </div>
 
-      <section className="homepage-container" id="home" ref={heroSectionRef}>
+      <section className="homepage-container" id="home">
         <div className="container">
           <div className="home-div">
             <div className="home-row">
               {/* Wipe Animation Profile Picture */}
-              <motion.div
-                initial={{ opacity: 0, scale: 0.5 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.8, ease: "easeOut" }}
-                className="profile-image-container"
-                ref={profileContainerRef}
-              >
-                {/* Normal Image (Background) */}
-                <img
-                  src={`${process.env.PUBLIC_URL}/Kartavya.webp`} // Placeholder until user adds profile-normal.jpg
-                  alt="Anany Singh"
-                  className="profile-img normal"
-                />
-
-                {/* Artistic Image (Foreground with Mask) */}
-                <div className="artistic-mask" ref={artisticMaskRef}>
-                  <img
-                    src={`${process.env.PUBLIC_URL}/Kartavya.webp`} // Placeholder until user adds profile-artistic.jpg
-                    alt="Anany Singh Artistic"
-                    className="profile-img artistic"
-                  />
-                </div>
-              </motion.div>
+              {/* Wipe Animation Profile Picture */}
+              <WipeProfileImage />
             </div>
 
             <div className="home-row info" style={{ zIndex: 99999 }}>
