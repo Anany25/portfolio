@@ -35,16 +35,22 @@
 
 .header-text {
   font-size: 0.8rem;
-  color: transparent; /* Hide the default text color */
-  background: linear-gradient(
-    to bottom,
-    #edeeef,
-    /* Lightest shade */ #dcdfe0,
-    /* Slightly darker */ #c9cccd /* Even darker, but not too dark */
-  );
-  -webkit-background-clip: text; /* Clip the gradient to the text for WebKit browsers */
-  background-clip: text; /* Standard background clip */
-  opacity: 0.85; /* Slightly more opaque */
+  color: transparent;
+  /* Hide the default text color */
+  background: linear-gradient(to bottom,
+      #edeeef,
+      /* Lightest shade */
+      #dcdfe0,
+      /* Slightly darker */
+      #c9cccd
+      /* Even darker, but not too dark */
+    );
+  -webkit-background-clip: text;
+  /* Clip the gradient to the text for WebKit browsers */
+  background-clip: text;
+  /* Standard background clip */
+  opacity: 0.85;
+  /* Slightly more opaque */
 }
 
 .title-bar {
@@ -80,11 +86,12 @@
   cursor: pointer;
   transition: background-color 0.3s ease, box-shadow 0.3s ease,
     border-radius 0.3s ease;
-  flex: 1 1 80%; /* Allow the tab to grow and shrink */
-  max-width: calc(
-    100% / 2
-  ); /* Each tab takes up 50% width if there are 2 or fewer */
-  min-width: 120px; /* Ensure the tab doesn't get too narrow */
+  flex: 1 1 80%;
+  /* Allow the tab to grow and shrink */
+  max-width: calc(100% / 2);
+  /* Each tab takes up 50% width if there are 2 or fewer */
+  min-width: 120px;
+  /* Ensure the tab doesn't get too narrow */
 }
 
 .tab:hover {
@@ -154,12 +161,11 @@
 }
 
 .minimize:hover {
-  background-color: rgba(
-    252,
-    188,
-    29,
-    0.5
-  ); /* Set background color with opacity */
+  background-color: rgba(252,
+      188,
+      29,
+      0.5);
+  /* Set background color with opacity */
 }
 
 .close {
@@ -233,7 +239,8 @@
 }
 
 .toast-message {
-  flex: 1; /* take up all available space */
+  flex: 1;
+  /* take up all available space */
 }
 
 .toast-close-btn {

@@ -10,37 +10,22 @@ const Links = ({ isBatterySavingOn, isWindowModalVisible }) => {
 
   const linksData = [
     {
-      href: "https://github.com/Kartavya904",
+      href: "https://github.com/Anany25",
       icon: require("../../assets/img/icons/github.png"),
       label: "GitHub",
     },
     {
-      href: "https://devpost.com/Kartavya904",
-      icon: require("../../assets/img/icons/devpost.png"),
-      label: "DevPost",
-    },
-    {
-      href: "https://www.linkedin.com/in/kartavya-singh-singhk6",
+      href: "https://www.linkedin.com/in/anany-singh",
       icon: require("../../assets/img/icons/linkedin.png"),
       label: "LinkedIn",
     },
     {
-      href: "https://www.instagram.com/kartavya1710/",
-      icon: require("../../assets/img/icons/instagram.png"),
-      label: "Instagram",
+      href: "https://medium.com/@anany-singh",
+      icon: require("../../assets/img/icons/medium.png"),
+      label: "Medium",
     },
     {
-      href: "https://discordapp.com/users/439541365580365835",
-      icon: require("../../assets/img/icons/discord.png"),
-      label: "Discord",
-    },
-    {
-      href: "https://calendly.com/singhk6/book-time-with-kartavya",
-      icon: require("../../assets/img/icons/calender.png"),
-      label: "Book Time with Kartavya",
-    },
-    {
-      href: "mailto:singhk6@mail.uc.edu",
+      href: "mailto:ananykumarsingh25@gmail.com",
       icon: require("../../assets/img/icons/email.png"),
       label: "Email",
     },

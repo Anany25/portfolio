@@ -73,82 +73,96 @@ const CertificatesTabPage = ({ isBatterySavingOn }) => {
                 }}
             >
                 <AnimatePresence mode="wait">
-                    {currentCertificates.map((cert, index) => (
-                        <motion.div
-                            key={`${currentPage}-${index}`}
-                            className="certificate-card"
-                            variants={isBatterySavingOn ? {} : fadeIn("up", 300, index * 0.1)}
-                            initial="hidden"
-                            animate="show"
-                            exit="hidden"
-                            whileHover={{ scale: 1.03 }}
-                            style={{
-                                background: "rgba(255, 255, 255, 0.05)",
-                                backdropFilter: "blur(10px)",
-                                borderRadius: "15px",
-                                padding: "1.5rem",
-                                border: "1px solid rgba(255, 255, 255, 0.1)",
-                                display: "flex",
-                                flexDirection: "column",
-                                alignItems: "center",
-                                textAlign: "center",
-                                boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
-                            }}
-                        >
+                    <motion.div
+                        key={currentPage}
+                        initial={{ opacity: 0, x: 20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        exit={{ opacity: 0, x: -20 }}
+                        transition={{ duration: 0.3 }}
+                        style={{
+                            display: "grid",
+                            gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
+                            gap: "2rem",
+                            width: "100%",
+                        }}
+                    >
+                        {currentCertificates.map((cert, index) => (
+                            <motion.div
+                                key={`${currentPage}-${index}`}
+                                className="certificate-card"
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                transition={{ delay: index * 0.05, duration: 0.3 }}
+                                whileHover={{ scale: 1.02 }}
+                                style={{
+                                    background: "rgba(255, 255, 255, 0.05)",
+                                    backdropFilter: "blur(10px)",
+                                    borderRadius: "15px",
+                                    padding: "1.5rem",
+                                    border: "1px solid rgba(255, 255, 255, 0.1)",
+                                    display: "flex",
+                                    flexDirection: "column",
+                                    alignItems: "center",
+                                    textAlign: "center",
+                                    boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
+                                }}
+                            >
 
-                            <h3
-                                style={{
-                                    color: "#edeeef",
-                                    fontSize: "1.2rem",
-                                    marginBottom: "0.5rem",
-                                    fontWeight: "600",
-                                }}
-                            >
-                                {cert.title}
-                            </h3>
-                            <p
-                                style={{
-                                    color: "#a0a0a0",
-                                    fontSize: "0.9rem",
-                                    marginBottom: "1.5rem",
-                                }}
-                            >
-                                {cert.type}
-                            </p>
-                            <div
-                                style={{
-                                    width: "100%",
-                                    height: "200px",
-                                    marginBottom: "1.5rem",
-                                    borderRadius: "10px",
-                                    overflow: "hidden",
-                                    background: "#fff",
-                                }}
-                            >
-                                <iframe
-                                    src={`${cert.pdfUrl}#toolbar=0&view=Fit`}
-                                    title={cert.title}
-                                    width="100%"
-                                    height="100%"
-                                    style={{ border: "none" }}
+                                <h3
+                                    style={{
+                                        color: "#edeeef",
+                                        fontSize: "1.2rem",
+                                        marginBottom: "0.5rem",
+                                        fontWeight: "600",
+                                    }}
                                 >
-                                    <p>Preview not available</p>
-                                </iframe>
-                            </div>
-                            <a
-                                href={cert.pdfUrl}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                style={{ textDecoration: "none", width: "100%" }}
-                            >
-                                <StyledButton>
-                                    <ButtonShadow />
-                                    <ButtonEdge />
-                                    <ButtonLabel>View Full Certificate</ButtonLabel>
-                                </StyledButton>
-                            </a>
-                        </motion.div >
-                    ))}
+                                    {cert.title}
+                                </h3>
+                                <p
+                                    style={{
+                                        color: "#a0a0a0",
+                                        fontSize: "0.9rem",
+                                        marginBottom: "1.5rem",
+                                    }}
+                                >
+                                    {cert.type}
+                                </p>
+                                <div
+                                    style={{
+                                        width: "100%",
+                                        height: "200px",
+                                        marginBottom: "1.5rem",
+                                        borderRadius: "10px",
+                                        overflow: "hidden",
+                                        background: "#fff",
+                                    }}
+                                >
+                                    <iframe
+                                        src={`${cert.pdfUrl}#toolbar=0&view=Fit`}
+                                        title={cert.title}
+                                        width="100%"
+                                        height="100%"
+                                        loading="lazy"
+                                        style={{ border: "none" }}
+                                    >
+                                        <p>Preview not available</p>
+                                    </iframe>
+                                </div>
+                                <a
+                                    href={cert.pdfUrl}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    style={{ textDecoration: "none", width: "100%" }}
+                                >
+                                    <StyledButton>
+                                        <ButtonShadow />
+                                        <ButtonEdge />
+                                        <ButtonLabel>View Full Certificate</ButtonLabel>
+                                    </StyledButton>
+                                </a>
+                            </motion.div >
+                        ))}
+                    </motion.div>
                 </AnimatePresence>
             </motion.div >
 

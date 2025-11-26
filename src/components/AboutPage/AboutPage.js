@@ -4,24 +4,24 @@ import { zoomIn, fadeIn } from "../../services/variants";
 import { styled } from "@stitches/react";
 import "../../styles/AboutPage.css";
 import { SpotlightBG } from "./SpotlightBG";
-// import AboutImg from "../../../public/Kartavya-Profile-Photo.webp";
+// import AboutImg from "../../../public/Anany-Profile-Photo.webp";
 import Resume from "../../assets/Singh_Kartavya_Resume2026.pdf";
 
 const aboutData = [
   {
     icon: "bx bxs-hourglass about-icon",
     title: "Coding Hours",
-    subtitle: "1300+ Hours",
+    subtitle: "1000+ Hours",
   },
   {
     icon: "bx bx-trophy about-icon",
     title: "Completed",
-    subtitle: "42+ Projects",
+    subtitle: "15+ Projects",
   },
   {
     icon: "bx bx-support about-icon",
     title: "LeetCode",
-    subtitle: "246+ Solutions",
+    subtitle: "150+ Solutions",
   },
 ];
 
@@ -75,7 +75,7 @@ function AboutPage({ isBatterySavingOn, isWindowModalVisible, addTab }) {
           <div className="about-container">
             <motion.div className="about-row">
               <motion.img
-                src={`${process.env.PUBLIC_URL}/Kartavya-Profile-Photo.webp`}
+                src={`${process.env.PUBLIC_URL}/about-profile.jpg`}
                 className="about-image"
                 alt="Profile"
                 loading="lazy"
@@ -172,7 +172,7 @@ function AboutPage({ isBatterySavingOn, isWindowModalVisible, addTab }) {
                 </motion.a>
                 <motion.a
                   href={Resume}
-                  download="Kartavya-Singh-Resume-2026.pdf"
+                  download="Anany-Singh-Resume-2026.pdf"
                   className="download-cv"
                   style={{ userSelect: "none" }}
                   draggable={false}
@@ -204,28 +204,15 @@ function AboutPage({ isBatterySavingOn, isWindowModalVisible, addTab }) {
                     <ButtonLabel>Experience</ButtonLabel>
                   </StyledButton>
                 </motion.a>
-                <motion.a>
-                  <StyledButton
-                    onClick={(e) => {
-                      e.preventDefault();
-                      addTab("FeedTab", { title: "Kartavya's Feed" });
-                    }}
-                  >
+                <motion.a
+                  href="https://medium.com/@anany-singh"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <StyledButton>
                     <ButtonShadow />
                     <ButtonEdge />
-                    <ButtonLabel>Feed</ButtonLabel>
-                  </StyledButton>
-                </motion.a>
-                <motion.a>
-                  <StyledButton
-                    onClick={(e) => {
-                      e.preventDefault();
-                      addTab("AIChatTab", { title: "Kartavya's AI Companion" });
-                    }}
-                  >
-                    <ButtonShadow />
-                    <ButtonEdge />
-                    <ButtonLabel>AI Companion</ButtonLabel>
+                    <ButtonLabel>Blog</ButtonLabel>
                   </StyledButton>
                 </motion.a>
               </motion.div>

@@ -5,37 +5,22 @@ import "../../styles/Footer.css";
 const Footer = ({ isBatterySavingOn, addTab }) => {
   const linksData = [
     {
-      href: "https://github.com/Kartavya904",
+      href: "https://github.com/Anany25",
       icon: require("../../assets/img/icons/github.png"),
       label: "GitHub",
     },
     {
-      href: "https://devpost.com/Kartavya904",
-      icon: require("../../assets/img/icons/devpost.png"),
-      label: "DevPost",
-    },
-    {
-      href: "https://www.linkedin.com/in/kartavya-singh-singhk6",
+      href: "https://www.linkedin.com/in/anany-singh",
       icon: require("../../assets/img/icons/linkedin.png"),
       label: "LinkedIn",
     },
     {
-      href: "https://www.instagram.com/kartavya1710/",
-      icon: require("../../assets/img/icons/instagram.png"),
-      label: "Instagram",
+      href: "https://medium.com/@anany-singh",
+      icon: require("../../assets/img/icons/medium.png"),
+      label: "Medium",
     },
     {
-      href: "https://discordapp.com/users/439541365580365835",
-      icon: require("../../assets/img/icons/discord.png"),
-      label: "Discord",
-    },
-    {
-      href: "https://calendly.com/singhk6/book-time-with-kartavya",
-      icon: require("../../assets/img/icons/calender.png"),
-      label: "Book Time with Kartavya",
-    },
-    {
-      href: "mailto:singhk6@mail.uc.edu",
+      href: "mailto:ananykumarsingh25@gmail.com",
       icon: require("../../assets/img/icons/email.png"),
       label: "Email",
     },
@@ -88,7 +73,7 @@ const Footer = ({ isBatterySavingOn, addTab }) => {
         whileTap={isBatterySavingOn ? {} : { scale: 0.99 }}
         onTap={() => scrollToSection("home")}
       >
-        <h2>Kartavya Singh</h2>
+        <h2>Anany Singh</h2>
         <p>Creating Impactful Solutions Through Code</p>
       </motion.div>
 
@@ -113,18 +98,7 @@ const Footer = ({ isBatterySavingOn, addTab }) => {
             </motion.button>
           </li>
         ))}
-        <li key={"admin"}>
-          <motion.button
-            onClick={() => addTab("Admin", { adminTitle: "Admin Page" })}
-            initial={isBatterySavingOn ? {} : { opacity: 0, scale: 0 }}
-            animate={isBatterySavingOn ? {} : { opacity: 1, scale: 1 }}
-            transition={
-              isBatterySavingOn ? {} : { delay: 0.1 * 4, type: "ease" }
-            }
-          >
-            Admin
-          </motion.button>
-        </li>
+
       </motion.ul>
 
       {/* Social Links */}
@@ -171,7 +145,7 @@ const Footer = ({ isBatterySavingOn, addTab }) => {
         transition={isBatterySavingOn ? {} : { delay: 0, type: "spring" }}
       >
         <p>
-          &copy; {new Date().getFullYear()} Kartavya Singh. All rights reserved.
+          &copy; {new Date().getFullYear()} Anany Singh. All rights reserved.
         </p>
       </motion.div>
     </motion.footer>

@@ -1,18 +1,21 @@
 .about-section-container {
   /* cursor: none; */
-  position: relative; /* Establishes a stacking context for child elements */
+  position: relative;
+  /* Establishes a stacking context for child elements */
   display: flex;
   overscroll-behavior-y: contain;
   scroll-snap-type: y mandatory;
   align-items: center;
   justify-content: center;
   height: calc(100vh - 52px);
-  background: transparent; /* Allow the beams to show through */
+  background: transparent;
+  /* Allow the beams to show through */
   font-family: "Montserrat", sans-serif;
   color: #212529;
   background-color: #212529;
   text-align: center;
-  z-index: 1; /* Ensures content stays above the beams */
+  z-index: 1;
+  /* Ensures content stays above the beams */
 }
 
 .about-div {
@@ -35,11 +38,9 @@
 }
 
 .glass {
-  background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.1),
-    rgba(255, 255, 255, 0)
-  );
+  background: linear-gradient(135deg,
+      rgba(255, 255, 255, 0.1),
+      rgba(255, 255, 255, 0));
   color: #212529;
   backdrop-filter: blur(3px);
   -webkit-backdrop-filter: blur(10px);
@@ -49,11 +50,10 @@
 }
 
 .section-title {
-  font-size: clamp(
-    1.5rem,
-    3vw,
-    2.5rem
-  ); /* Scales dynamically with screen width */
+  font-size: clamp(1.5rem,
+      3vw,
+      2.5rem);
+  /* Scales dynamically with screen width */
   color: #edeeef;
   text-align: center;
 }
@@ -61,11 +61,13 @@
 .about-container {
   display: flex;
   flex-direction: row;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   overflow: hidden;
   margin: 10px;
   line-height: 1.5;
+  padding-top: 2rem;
+  /* Add some padding to push content down slightly if needed */
 }
 
 .about-row {
@@ -76,6 +78,7 @@
   gap: 1rem;
   margin: 10px;
 }
+
 .about-row:first-child {
   flex: 1;
 }
@@ -120,7 +123,8 @@
 
 .about-icon {
   color: #212529;
-  font-size: clamp(0.75rem, 1.75vw, 1rem); /* Scales dynamically */
+  font-size: clamp(0.75rem, 1.75vw, 1rem);
+  /* Scales dynamically */
   font-weight: 500;
 }
 
@@ -130,7 +134,8 @@
 }
 
 .about-subtitle {
-  font-size: clamp(0.625rem, 1vw, 0.8rem); /* Responsive to width */
+  font-size: clamp(0.625rem, 1vw, 0.8rem);
+  /* Responsive to width */
   font-weight: 400;
 }
 
@@ -148,14 +153,16 @@
 }
 
 .about-name {
-  font-size: clamp(1.5rem, 2vw, 2.25rem); /* Dynamically adjusts */
+  font-size: clamp(1.5rem, 2vw, 2.25rem);
+  /* Dynamically adjusts */
   font-weight: 700;
   text-align: left;
 }
 
 .about-role {
   width: 100%;
-  font-size: clamp(0.675rem, 0.95vw, 1rem); /* Dynamically adjusts font size */
+  font-size: clamp(0.675rem, 0.95vw, 1rem);
+  /* Dynamically adjusts font size */
   font-weight: 500;
   font-style: bold;
   text-align: left;
@@ -163,12 +170,14 @@
 
 .about-description {
   text-align: left;
-  font-size: clamp(0.675rem, 0.95vw, 1rem); /* Scales dynamically */
+  font-size: clamp(0.675rem, 0.95vw, 1rem);
+  /* Scales dynamically */
   font-weight: 400;
 }
 
 .about-page-subtitle {
-  font-size: clamp(1rem, 2vw, 1.25rem); /* Scales dynamically */
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  /* Scales dynamically */
   color: #edeeef;
 }
 
@@ -208,7 +217,8 @@
   }
 
   .about-icon {
-    font-size: clamp(0.6rem, 1.75vw, 1rem); /* Scales dynamically */
+    font-size: clamp(0.6rem, 1.75vw, 1rem);
+    /* Scales dynamically */
     font-weight: 500;
   }
 
@@ -218,7 +228,8 @@
   }
 
   .about-subtitle {
-    font-size: clamp(0.5rem, 1vw, 0.8rem); /* Responsive to width */
+    font-size: clamp(0.5rem, 1vw, 0.8rem);
+    /* Responsive to width */
     font-weight: 500;
   }
 
@@ -227,17 +238,20 @@
   }
 
   .about-name {
-    font-size: clamp(1rem, 2vw, 1.25rem); /* Adjusted for smaller screens */
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    /* Adjusted for smaller screens */
     padding: 2px;
   }
 
   .about-role {
-    font-size: clamp(0.5rem, 1vw, 0.8rem); /* Dynamically adjusts */
+    font-size: clamp(0.5rem, 1vw, 0.8rem);
+    /* Dynamically adjusts */
     padding: 2px;
   }
 
   .about-description {
-    font-size: clamp(0.6rem, 1vw, 0.8rem); /* Adjusted for smaller screens */
+    font-size: clamp(0.6rem, 1vw, 0.8rem);
+    /* Adjusted for smaller screens */
     padding: 2px;
   }
 }
@@ -263,17 +277,20 @@
   }
 
   .about-name {
-    font-size: clamp(1.5rem, 3vw, 2.25rem); /* Adjusted for smaller screens */
+    font-size: clamp(1.5rem, 3vw, 2.25rem);
+    /* Adjusted for smaller screens */
     padding: 2px;
   }
 
   .about-role {
-    font-size: clamp(0.75rem, 2vw, 1.8rem); /* Dynamically adjusts */
+    font-size: clamp(0.75rem, 2vw, 1.8rem);
+    /* Dynamically adjusts */
     padding: 2px;
   }
 
   .about-description {
-    font-size: clamp(0.75rem, 2vw, 1.8rem); /* Adjusted for smaller screens */
+    font-size: clamp(0.75rem, 2vw, 1.8rem);
+    /* Adjusted for smaller screens */
     padding: 2px;
   }
 }
@@ -299,7 +316,8 @@
   }
 
   .about-icon {
-    font-size: clamp(0.6rem, 2vw, 1.1rem); /* Scales dynamically */
+    font-size: clamp(0.6rem, 2vw, 1.1rem);
+    /* Scales dynamically */
     font-weight: 500;
   }
 
@@ -309,7 +327,8 @@
   }
 
   .about-subtitle {
-    font-size: clamp(0.6rem, 1.25vw, 0.9rem); /* Responsive to width */
+    font-size: clamp(0.6rem, 1.25vw, 0.9rem);
+    /* Responsive to width */
     font-weight: 500;
   }
 
@@ -319,17 +338,20 @@
   }
 
   .about-name {
-    font-size: clamp(0.75rem, 4vw, 2.25rem); /* Adjusted for smaller screens */
+    font-size: clamp(0.75rem, 4vw, 2.25rem);
+    /* Adjusted for smaller screens */
     padding: 2px;
   }
 
   .about-role {
-    font-size: clamp(0.6rem, 2vw, 2rem); /* Dynamically adjusts */
+    font-size: clamp(0.6rem, 2vw, 2rem);
+    /* Dynamically adjusts */
     padding: 2px;
   }
 
   .about-description {
-    font-size: clamp(0.6rem, 2vw, 2rem); /* Adjusted for smaller screens */
+    font-size: clamp(0.6rem, 2vw, 2rem);
+    /* Adjusted for smaller screens */
     padding: 2px;
     text-align: justify;
     /* let long words break with hyphens instead of huge gaps */

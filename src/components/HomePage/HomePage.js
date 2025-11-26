@@ -14,9 +14,9 @@ import {
 import { zoomIn } from "../../services/variants";
 import "../../styles/HomePage.css";
 import WipeProfileImage from "./WipeProfileImage";
-// import ProfilePhoto from `${process.env.PUBLIC_URL}/Kartavya.webp`;
+// import ProfilePhoto from `${process.env.PUBLIC_URL}/Anany.webp`;
 
-function HomePage({ isBatterySavingOn, scrolled, addTab, sendQuery }) {
+function HomePage({ isBatterySavingOn, scrolled, addTab }) {
   const [clicked, setClicked] = useState(false);
   const [isCooldown, setIsCooldown] = useState(false);
   const clickCount = useRef(0); // Use useRef to keep track of click count across renders

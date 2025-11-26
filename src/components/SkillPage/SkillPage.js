@@ -90,41 +90,7 @@ function SkillPage({ isBatterySavingOn, isWindowModalVisible }) {
             >
               <SkillSection isBatterySavingOn={isBatterySavingOn} />
             </motion.div>
-            <motion.p
-              className="skill-paragraph"
-              variants={isBatterySavingOn ? {} : fadeIn("right", 200, 0)}
-              initial="hidden"
-              whileInView="show"
-              exit="hidden"
-            >
-              <strong>My Workspace</strong>
-            </motion.p>
-            <motion.div className="last-skill-row">
-              <motion.div className="last-skill-column column1">
-                <a
-                  href="https://github.com/Anany25"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="github-icon"
-                >
-                  <img src={github} alt="GitHub" />
-                </a>
-              </motion.div>
-              <motion.div className="last-skill-column column2">
-                <motion.div
-                  className="skill-graph-carousel"
-                  variants={isBatterySavingOn ? {} : zoomIn(0)}
-                  initial="hidden"
-                  whileInView="show"
-                  exit="hidden"
-                >
-                  <SkillGraphCarousel
-                    skills={skills}
-                    isBatterySavingOn={isBatterySavingOn}
-                  />
-                </motion.div>
-              </motion.div>
-            </motion.div>
+
           </motion.div>
         </div>
       </motion.div>

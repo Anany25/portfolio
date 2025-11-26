@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useRef } from "react";
-import Resume from "../../assets/Singh_Kartavya_Resume2026.pdf";
+import Resume from "../../assets/Anany_Singh_Resume.pdf";
 import { motion } from "framer-motion";
 import { fadeIn } from "../../services/variants";
 import "../../styles/NavBar.css";
 
-const NavBar = ({ isBatterySavingOn, addTab }) => {
+const NavBar = ({ isBatterySavingOn, addTab, theme, toggleTheme }) => {
   const [activeLink, setActiveLink] = useState("home");
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -214,8 +214,10 @@ const NavBar = ({ isBatterySavingOn, addTab }) => {
             // }
           }}
         >
-          <b>Kartavya Singh</b>
+          <b>Anany Singh</b>
         </motion.a>
+
+
 
         {/* Toggle button for menu */}
         <motion.button
@@ -240,9 +242,9 @@ const NavBar = ({ isBatterySavingOn, addTab }) => {
         {/* Conditionally rendered navbar menu */}
         <motion.div
           className={`navbar-menu ${menuOpen ? "open" : ""}`}
-          // variants={fadeIn("left", 40, 0)}
-          // initial="hidden"
-          // animate="show"
+        // variants={fadeIn("left", 40, 0)}
+        // initial="hidden"
+        // animate="show"
         >
           <motion.ul
             className="navbar-links"
@@ -366,20 +368,18 @@ const NavBar = ({ isBatterySavingOn, addTab }) => {
               </a>
             </motion.li>
             <motion.li
-              className={activeLink === "feed" ? "active nav-item" : "nav-item"}
+              className="nav-item"
               whileHover={screenWidth > 992 ? { scale: 1.1, rotate: -2 } : {}}
               whileTap={screenWidth > 992 ? { scale: 0.9, rotate: 2 } : {}}
             >
               <a
-                href="#feed"
-                className={"navbar-link"}
-                onClick={(e) => {
-                  e.preventDefault();
-                  addTab("FeedTab", { title: "Kartavya's Feed" });
-                  setMenuOpen(false);
-                }}
+                href="https://medium.com/@anany-singh"
+                className="navbar-link"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setMenuOpen(false)}
               >
-                <span className="navbar-text feed-nav">FEED</span>
+                <span className="navbar-text">BLOG</span>
               </a>
             </motion.li>
             <motion.li
@@ -388,7 +388,7 @@ const NavBar = ({ isBatterySavingOn, addTab }) => {
               whileTap={screenWidth > 992 ? { scale: 0.9, rotate: 2 } : {}}
             >
               <a
-                download="Kartavya-Singh-Resume-2026.pdf"
+                download="Anany-Singh-Resume-2026.pdf"
                 href={Resume}
                 className="navbar-link"
                 target="_blank"
@@ -396,26 +396,6 @@ const NavBar = ({ isBatterySavingOn, addTab }) => {
               >
                 <span className="navbar-text">
                   <i className="fa fa-file-pdf-o"></i> RESUME
-                </span>
-              </a>
-            </motion.li>
-            <motion.li
-              className={activeLink === "feed" ? "active nav-item" : "nav-item"}
-              whileHover={screenWidth > 992 ? { scale: 1.1, rotate: -2 } : {}}
-              whileTap={screenWidth > 992 ? { scale: 0.9, rotate: 2 } : {}}
-            >
-              <a
-                href="#feed"
-                className={"navbar-link ai-chat-nav"}
-                onClick={(e) => {
-                  e.preventDefault();
-                  addTab("AIChatTab", { title: "Kartavya's AI Companion" });
-                  setMenuOpen(false);
-                }}
-              >
-                <span className="navbar-text">
-                  <i className="fa fa-search"></i>{" "}
-                  {menuOpen ? "AI COMPANION" : ""}
                 </span>
               </a>
             </motion.li>

@@ -2,15 +2,14 @@ import React, { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import "../../styles/WindowModal.css";
 import windowIcon from "../../assets/img/icons/window.svg";
-import AdminTab from "./AdminTab"; // Add this import
+
 import ProjectTab from "./ProjectTab";
 import ExperienceTab from "./ExperienceTab";
 import InvolvementTab from "./InvolvementTab";
 import HonorsTab from "./HonorsTab";
 import YearInReviewTab from "./YearInReviewTab";
 import ProjectsListView from "../ProjectPage/ProjectsListView";
-import FeedTab from "./FeedTab";
-import AIChatTab from "./AIChatTab";
+
 
 const WindowModal = ({
   tabs,
@@ -28,32 +27,6 @@ const WindowModal = ({
   setLoggedIn,
   isWindowModalVisible,
   setIsWindowModalVisible,
-  API_URL,
-  MAX_QUERIES,
-  TYPING_DELAY,
-  chatStarted,
-  setChatStarted,
-  chatHistory,
-  setChatHistory,
-  loading,
-  setLoading,
-  query,
-  setQuery,
-  interimQuery,
-  setInterimQuery,
-  followUpSuggestions,
-  setFollowUpSuggestions,
-  conversationMemory,
-  setConversationMemory,
-  latestAIId,
-  setLatestAIId,
-  errorMsg,
-  setErrorMsg,
-  queriesSent,
-  setQueriesSent,
-  cancelRef,
-  sendQuery,
-  stopGenerating,
 }) => {
   const modalRef = useRef(null);
   // Toast state
@@ -110,11 +83,7 @@ const WindowModal = ({
     }
     const right = window.innerWidth < 768 ? "70px" : "80px";
     addToast(`Minimized ${tabName} Tab`, { top: "65px", right });
-    stopGenerating();
-    setChatHistory([]);
-    setConversationMemory("");
-    setFollowUpSuggestions([]);
-    setChatStarted(false);
+
     setIsMinimized(true);
     setIsClosed(false);
   };
@@ -134,16 +103,10 @@ const WindowModal = ({
     const handleClickOutside = (event) => {
       if (modalRef.current && !modalRef.current.contains(event.target)) {
         if (
-          event.target.closest(".feed-nav") ||
-          event.target.closest(".ai-chat-nav") ||
           event.target.closest(".navbar-toggler")
         )
           return;
-        stopGenerating();
-        setChatHistory([]);
-        setConversationMemory("");
-        setFollowUpSuggestions([]);
-        setChatStarted(false);
+
         setIsMinimized(true); // Minimize if clicking outside
       }
     };
@@ -212,51 +175,8 @@ const WindowModal = ({
             showStarred={false}
           />
         );
-      case "Admin": // Add this new case
-        return (
-          <AdminTab
-            data={data}
-            isBatterySavingOn={isBatterySavingOn}
-            loggedIn={loggedIn}
-            setLoggedIn={setLoggedIn}
-          />
-        );
-      case "FeedTab":
-        return <FeedTab isBatterySavingOn={isBatterySavingOn} />;
-      case "AIChatTab":
-        return (
-          <AIChatTab
-            scrolled={scrolled}
-            isMinimized={isMinimized}
-            isClosed={isClosed}
-            API_URL={API_URL}
-            MAX_QUERIES={MAX_QUERIES}
-            TYPING_DELAY={TYPING_DELAY}
-            chatStarted={chatStarted}
-            setChatStarted={setChatStarted}
-            chatHistory={chatHistory}
-            setChatHistory={setChatHistory}
-            loading={loading}
-            setLoading={setLoading}
-            query={query}
-            setQuery={setQuery}
-            interimQuery={interimQuery}
-            setInterimQuery={setInterimQuery}
-            followUpSuggestions={followUpSuggestions}
-            setFollowUpSuggestions={setFollowUpSuggestions}
-            conversationMemory={conversationMemory}
-            setConversationMemory={setConversationMemory}
-            latestAIId={latestAIId}
-            setLatestAIId={setLatestAIId}
-            errorMsg={errorMsg}
-            setErrorMsg={setErrorMsg}
-            queriesSent={queriesSent}
-            setQueriesSent={setQueriesSent}
-            cancelRef={cancelRef}
-            sendQuery={sendQuery}
-            stopGenerating={stopGenerating}
-          />
-        );
+
+
       default:
         return null;
     }
@@ -289,11 +209,7 @@ const WindowModal = ({
 
   const handleCloseModal = () => {
     // addToast(`Closed Portfolio Explorer`, { top: "65px", right: "20px" });
-    stopGenerating();
-    setChatHistory([]);
-    setConversationMemory("");
-    setFollowUpSuggestions([]);
-    setChatStarted(false);
+
     setTabs([]);
     setLastActiveIndex(0);
     setIsClosed(true);
@@ -424,37 +340,37 @@ const WindowModal = ({
                 isBatterySavingOn
                   ? {}
                   : {
-                      scale: [
-                        0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1,
-                      ],
-                      opacity: [
-                        0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1,
-                      ],
-                    }
+                    scale: [
+                      0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1,
+                    ],
+                    opacity: [
+                      0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1,
+                    ],
+                  }
               }
               animate={
                 isBatterySavingOn
                   ? {}
                   : {
-                      scale: [
-                        0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1,
-                      ],
-                      opacity: [
-                        0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1,
-                      ],
-                    }
+                    scale: [
+                      0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1,
+                    ],
+                    opacity: [
+                      0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1,
+                    ],
+                  }
               }
               exit={
                 isBatterySavingOn
                   ? {}
                   : {
-                      scale: [
-                        1, 0.9, 0.8, 0.7, 0.6, 0.5, 0.4, 0.3, 0.2, 0.1, 0,
-                      ],
-                      opacity: [
-                        1, 0.9, 0.8, 0.7, 0.6, 0.5, 0.4, 0.3, 0.2, 0.1, 0,
-                      ],
-                    }
+                    scale: [
+                      1, 0.9, 0.8, 0.7, 0.6, 0.5, 0.4, 0.3, 0.2, 0.1, 0,
+                    ],
+                    opacity: [
+                      1, 0.9, 0.8, 0.7, 0.6, 0.5, 0.4, 0.3, 0.2, 0.1, 0,
+                    ],
+                  }
               }
               transition={
                 isBatterySavingOn
@@ -476,9 +392,8 @@ const WindowModal = ({
                     {tabs.map((tab) => (
                       <div
                         key={`tab-${tab.index}`}
-                        className={`tab ${
-                          lastActiveIndex === tab.index ? "active" : ""
-                        }`}
+                        className={`tab ${lastActiveIndex === tab.index ? "active" : ""
+                          }`}
                         onClick={() => setLastActiveIndex(tab.index)}
                       >
                         <div className="tab-title">{tab.name}</div>
