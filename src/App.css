@@ -1,0 +1,180 @@
+@font-face {
+    font-family: "Montserrat";
+    src: url("./assets/font/Montserrat-Bold.ttf");
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: "Montserrat";
+    src: url("./assets/font/Montserrat-Medium.ttf");
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: "Montserrat";
+    src: url("./assets/font/Montserrat-Regular.ttf");
+    font-weight: 400;
+}
+
+/* Initial Default Styling */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    user-select: none;
+}
+
+:root {
+    --bg-color: #212529;
+    --text-color: #edeeef;
+    --nav-bg: #212529;
+    --card-bg: #edeeef;
+    --card-text: #212529;
+}
+
+[data-theme="light"] {
+    --bg-color: #f8f9fa;
+    --text-color: #212529;
+    --nav-bg: #f8f9fa;
+    --card-bg: #ffffff;
+    --card-text: #212529;
+}
+
+html {
+    scroll-behavior: smooth;
+    background-color: var(--bg-color);
+    scrollbar-width: none !important;
+    transition: background-color 0.3s ease;
+}
+
+body {
+    font-weight: 400;
+    overflow-x: hidden;
+    position: relative;
+    color: var(--text-color) !important;
+    font-family: "Montserrat", sans-serif !important;
+    background-color: var(--bg-color);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Scroll to Top Button */
+.scroll-to-top {
+    position: fixed;
+    right: 15px;
+    bottom: 15px;
+    display: none;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    text-decoration: none !important;
+    font-family: "Source Sans Pro";
+    font-size: 1rem;
+    font-weight: 400;
+    color: white;
+    border-radius: 10%;
+    background: rgba(52, 58, 64, 0.5);
+    line-height: 45px;
+    transition: background 0.1s ease-in-out;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+.scroll-to-top:hover {
+    background: rgba(52, 58, 64, 0.8);
+}
+
+@font-face {
+    font-family: "Montserrat";
+    src: url("./assets/font/Montserrat-Bold.ttf");
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: "Montserrat";
+    src: url("./assets/font/Montserrat-Medium.ttf");
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: "Montserrat";
+    src: url("./assets/font/Montserrat-Regular.ttf");
+    font-weight: 400;
+}
+
+/* Initial Default Styling */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    user-select: none;
+}
+
+:root {
+    --bg-color: #212529;
+    --text-color: #edeeef;
+    --nav-bg: #212529;
+    --card-bg: #edeeef;
+    --card-text: #212529;
+}
+
+[data-theme="light"] {
+    --bg-color: #f8f9fa;
+    --text-color: #212529;
+    --nav-bg: #f8f9fa;
+    --card-bg: #ffffff;
+    --card-text: #212529;
+}
+
+html {
+    scroll-behavior: smooth;
+    background-color: var(--bg-color);
+    scrollbar-width: none !important;
+    transition: background-color 0.3s ease;
+}
+
+body {
+    font-weight: 400;
+    overflow-x: hidden;
+    position: relative;
+    color: var(--text-color) !important;
+    font-family: "Montserrat", sans-serif !important;
+    background-color: var(--bg-color);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Scroll to Top Button */
+.scroll-to-top {
+    position: fixed;
+    right: 15px;
+    bottom: 15px;
+    display: none;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    text-decoration: none !important;
+    font-family: "Source Sans Pro";
+    font-size: 1rem;
+    font-weight: 400;
+    color: white;
+    border-radius: 10%;
+    background: rgba(52, 58, 64, 0.5);
+    line-height: 45px;
+    transition: background 0.1s ease-in-out;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+.scroll-to-top:hover {
+    background: rgba(52, 58, 64, 0.8);
+}
+
+.scroll-to-top.show {
+    display: inline;
+    /* Show the button when 'show' class is applied */
+}
