@@ -27,7 +27,7 @@ function ProjectsListView({ addTab, isBatterySavingOn, showFeatured }) {
     async function getProjects() {
       try {
         const data = await fetchProjects();
-        setProjects(data.reverse());
+        setProjects(data);
         // Initialize card states for hover effects
         setCardStates(
           data.map(() => ({
