@@ -24,7 +24,28 @@ const CustomArrow = ({ direction, onClick, imgSrc, label, disabled }) => {
 const CertificatesTabPage = ({ isBatterySavingOn }) => {
     const [certificates, setCertificates] = useState([]);
     const [currentPage, setCurrentPage] = useState(0);
-    const itemsPerPage = 6;
+    const [itemsPerPage, setItemsPerPage] = useState(6);
+
+    useEffect(() => {
+        const handleResize = () => {
+            if (window.innerWidth < 768) {
+                setItemsPerPage(1);
+            } else if (window.innerWidth < 1024) {
+                setItemsPerPage(4);
+            } else {
+                setItemsPerPage(6);
+            }
+        };
+
+        handleResize(); // Set initial value
+        window.addEventListener("resize", handleResize);
+        return () => window.removeEventListener("resize", handleResize);
+    }, []);
+
+    // Reset to first page when items per page changes to avoid empty views
+    useEffect(() => {
+        setCurrentPage(0);
+    }, [itemsPerPage]);
 
     useEffect(() => {
         const loadCertificates = async () => {
@@ -114,6 +135,10 @@ const CertificatesTabPage = ({ isBatterySavingOn }) => {
                                         fontSize: "1.2rem",
                                         marginBottom: "0.5rem",
                                         fontWeight: "600",
+                                        minHeight: "6rem", // Increased height for 3-4 lines
+                                        display: "flex",
+                                        alignItems: "center",
+                                        justifyContent: "center",
                                     }}
                                 >
                                     {cert.title}
@@ -167,7 +192,7 @@ const CertificatesTabPage = ({ isBatterySavingOn }) => {
             </motion.div >
 
             {/* Pagination Controls */}
-            <div className="certificates-pagination">
+            < div className="certificates-pagination" >
                 <CustomArrow
                     direction="left"
                     onClick={prevPage}
@@ -185,8 +210,8 @@ const CertificatesTabPage = ({ isBatterySavingOn }) => {
                     label="Next Page"
                     disabled={currentPage === totalPages - 1}
                 />
-            </div>
-        </div>
+            </div >
+        </div >
     );
 };
 

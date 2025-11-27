@@ -21,8 +21,38 @@ const Links = ({ isBatterySavingOn, isWindowModalVisible }) => {
     },
     {
       href: "https://medium.com/@anany-singh",
-      icon: require("../../assets/img/icons/medium.png"),
       label: "Medium",
+      isComponent: true,
+      component: (
+        <svg
+          viewBox="0 0 100 100"
+          style={{
+            width: "50%",
+            height: "50%",
+            display: "block",
+          }}
+          className="icon-img"
+        >
+          <defs>
+            <mask id="cutout-m-links">
+              <rect width="100%" height="100%" fill="white" />
+              <text
+                x="50%"
+                y="55%"
+                textAnchor="middle"
+                dominantBaseline="middle"
+                fontFamily="'Times New Roman', Times, serif"
+                fontWeight="bold"
+                fontSize="65"
+                fill="black"
+              >
+                M
+              </text>
+            </mask>
+          </defs>
+          <circle cx="50" cy="50" r="50" fill="black" mask="url(#cutout-m-links)" />
+        </svg>
+      ),
     },
     {
       href: "mailto:ananykumarsingh25@gmail.com",
@@ -132,13 +162,17 @@ const Links = ({ isBatterySavingOn, isWindowModalVisible }) => {
                 whileTap={isBatterySavingOn ? {} : { scale: 0.9 }}
                 transition={isBatterySavingOn ? {} : { duration: 0.5 }}
               >
-                <animated.img
-                  draggable="false"
-                  src={link.icon}
-                  alt={link.label}
-                  className="icon-img"
-                  loading="eager"
-                />
+                {link.isComponent ? (
+                  link.component
+                ) : (
+                  <animated.img
+                    draggable="false"
+                    src={link.icon}
+                    alt={link.label}
+                    className="icon-img"
+                    loading="eager"
+                  />
+                )}
                 <motion.span
                   className="link-label"
                   initial={isBatterySavingOn ? {} : { opacity: 0, x: -20 }}

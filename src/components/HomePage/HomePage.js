@@ -156,7 +156,7 @@ function HomePage({ isBatterySavingOn, scrolled, addTab }) {
                 rgba(0, 0, 0, 0.25),
                 rgba(0, 0, 0, 0.1),
                 rgba(0, 0, 0, 0.1)
-              ), url('${process.env.PUBLIC_URL}/home-bg.webp'))`,
+              ), url('${process.env.PUBLIC_URL}/home-bg.jpg'))`,
                 backgroundRepeat: "no-repeat",
                 backgroundAttachment: "fixed",
                 backgroundPosition: "center",
@@ -173,7 +173,7 @@ function HomePage({ isBatterySavingOn, scrolled, addTab }) {
                   rgba(0, 0, 0, 0.25),
                   rgba(0, 0, 0, 0.1),
                   rgba(0, 0, 0, 0.1)
-                ), url('${process.env.PUBLIC_URL}/home-bg.webp')`,
+                ), url('${process.env.PUBLIC_URL}/home-bg.jpg')`,
                 backgroundRepeat: "no-repeat",
                 backgroundAttachment: "fixed",
                 backgroundPosition: "center",

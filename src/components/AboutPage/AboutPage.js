@@ -5,7 +5,7 @@ import { styled } from "@stitches/react";
 import "../../styles/AboutPage.css";
 import { SpotlightBG } from "./SpotlightBG";
 // import AboutImg from "../../../public/Anany-Profile-Photo.webp";
-import Resume from "../../assets/Singh_Kartavya_Resume2026.pdf";
+import Resume from "../../assets/Anany_Singh_Resume.pdf";
 
 const aboutData = [
   {

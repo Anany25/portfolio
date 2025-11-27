@@ -3,7 +3,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { zoomIn } from "../../services/variants";
 import LeftArrow from "../../assets/img/icons/arrow1.svg";
 import RightArrow from "../../assets/img/icons/arrow2.svg";
-import LikeButton from "../SpecialComponents/LikeButton";
+
 import { fetchExperiences } from "../../services/experienceService";
 import { styled } from "@stitches/react";
 
@@ -80,10 +80,10 @@ const CareerTabPage = ({ addTab, isBatterySavingOn }) => {
     n === 0
       ? []
       : n === 1
-      ? [0]
-      : n === 2
-      ? [activeSlide, nextIndex]
-      : [prevIndex, activeSlide, nextIndex];
+        ? [0]
+        : n === 2
+          ? [activeSlide, nextIndex]
+          : [prevIndex, activeSlide, nextIndex];
 
   // ---------------- Advanced Swipe Logic ----------------
   const swipeConfidenceThreshold = 10000;
@@ -126,10 +126,10 @@ const CareerTabPage = ({ addTab, isBatterySavingOn }) => {
                 index === activeSlide
                   ? "active"
                   : index === prevIndex
-                  ? "prev"
-                  : index === nextIndex
-                  ? "next"
-                  : "hidden";
+                    ? "prev"
+                    : index === nextIndex
+                      ? "next"
+                      : "hidden";
               return (
                 <motion.div
                   key={index}
@@ -141,29 +141,7 @@ const CareerTabPage = ({ addTab, isBatterySavingOn }) => {
                   transition={slideTransition}
                 >
                   <div className="slider-content">
-                    {/* Like Button at top-right */}
-                    <div
-                      style={{
-                        position: "absolute",
-                        top: "10px",
-                        right: "10px",
-                        zIndex: 100,
-                      }}
-                    >
-                      <LikeButton
-                        type="Experience"
-                        title={experience.experienceTitle}
-                        onLikeSuccess={() =>
-                          setExperiences((prevExperiences) =>
-                            prevExperiences.map((e) =>
-                              e.experienceTitle === experience.experienceTitle
-                                ? { ...e, likesCount: (e.likesCount || 0) + 1 }
-                                : e
-                            )
-                          )
-                        }
-                      />
-                    </div>
+
                     <div className="career-container">
                       <div className="career-image">
                         <img
@@ -180,20 +158,20 @@ const CareerTabPage = ({ addTab, isBatterySavingOn }) => {
                         <div className="career-subtitle-area">
                           <h4 className="career-subtitle">
                             {experience.experienceSubTitle &&
-                            experience.experienceSubTitle !== "NA"
+                              experience.experienceSubTitle !== "NA"
                               ? experience.experienceSubTitle
                               : null}
                           </h4>
                           <p className="career-timeline">
                             {experience.experienceTimeline &&
-                            experience.experienceTimeline !== "NA"
+                              experience.experienceTimeline !== "NA"
                               ? experience.experienceTimeline
                               : null}
                           </p>
                         </div>
                         <p className="career-tagline">
                           {experience.experienceTagline &&
-                          experience.experienceTagline !== "NA"
+                            experience.experienceTagline !== "NA"
                             ? experience.experienceTagline
                             : null}
                         </p>
@@ -227,20 +205,7 @@ const CareerTabPage = ({ addTab, isBatterySavingOn }) => {
                         </motion.div>
                       </div>
                     </div>
-                    {experience.likesCount > 0 && (
-                      <div
-                        style={{
-                          position: "absolute",
-                          bottom: "27.5px",
-                          right: "10px",
-                          color: "#edeeef",
-                          fontSize: "0.8em",
-                          zIndex: 150,
-                        }}
-                      >
-                        Likes: {experience.likesCount}
-                      </div>
-                    )}
+
                   </div>
                 </motion.div>
               );

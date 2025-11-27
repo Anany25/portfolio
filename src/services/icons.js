@@ -37,6 +37,7 @@ import arabic from "../assets/img/icons/arabic.png";
 import aws from "../assets/img/icons/aws.svg";
 import gcp from "../assets/img/icons/gcp.svg";
 import azure from "../assets/img/icons/azure.svg";
+import pytorch from "../assets/img/icons/pytorch.svg";
 
 const icons = {
   javascript,
@@ -78,6 +79,7 @@ const icons = {
   aws,
   gcp,
   azure,
+  pytorch,
 };
 
 export default icons;

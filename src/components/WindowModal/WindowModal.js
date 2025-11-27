@@ -384,7 +384,7 @@ const WindowModal = ({
               <div className="window-content">
                 <motion.div className="header-bar">
                   <div className="header-text">
-                    Portfolio Explorer | Items: {totalTabs}/3
+                    Portfolio Explorer | Items: {totalTabs}
                   </div>
                 </motion.div>
                 <motion.div className="title-bar">

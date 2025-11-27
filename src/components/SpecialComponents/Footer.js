@@ -16,8 +16,38 @@ const Footer = ({ isBatterySavingOn, addTab }) => {
     },
     {
       href: "https://medium.com/@anany-singh",
-      icon: require("../../assets/img/icons/medium.png"),
       label: "Medium",
+      isComponent: true,
+      component: (
+        <svg
+          viewBox="0 0 100 100"
+          style={{
+            width: "30px",
+            height: "30px",
+            display: "block",
+          }}
+          className="footer-icon"
+        >
+          <defs>
+            <mask id="cutout-m-footer">
+              <rect width="100%" height="100%" fill="white" />
+              <text
+                x="50%"
+                y="55%"
+                textAnchor="middle"
+                dominantBaseline="middle"
+                fontFamily="'Times New Roman', Times, serif"
+                fontWeight="bold"
+                fontSize="65"
+                fill="black"
+              >
+                M
+              </text>
+            </mask>
+          </defs>
+          <circle cx="50" cy="50" r="50" fill="black" mask="url(#cutout-m-footer)" />
+        </svg>
+      ),
     },
     {
       href: "mailto:ananykumarsingh25@gmail.com",
@@ -127,12 +157,16 @@ const Footer = ({ isBatterySavingOn, addTab }) => {
             whileTap={isBatterySavingOn ? {} : { scale: 0.99, rotate: 0 }}
             transition={isBatterySavingOn ? {} : { delay: 0, type: "spring" }}
           >
-            <motion.img
-              src={link.icon}
-              alt={link.label}
-              className="footer-icon"
-              drag="false"
-            />
+            {link.isComponent ? (
+              link.component
+            ) : (
+              <motion.img
+                src={link.icon}
+                alt={link.label}
+                className="footer-icon"
+                drag="false"
+              />
+            )}
           </motion.a>
         ))}
       </motion.div>

@@ -1,98 +1,109 @@
 const certificates = [
+    // 1. Deep Learning Specialization
     {
-        title: "Coursera 5QSFWAGU8DUA",
-        fileName: "Coursera 5QSFWAGU8DUA.pdf",
-        pdfUrl: `${process.env.PUBLIC_URL}/certificates/Coursera 5QSFWAGU8DUA.pdf`,
+        title: "DeepLearning.AI TensorFlow Developer Specialization",
+        fileName: "Coursera DeepLearning.AI TensorFlow Developer Specialization.pdf",
+        pdfUrl: `${process.env.PUBLIC_URL}/certificates/Coursera DeepLearning.AI TensorFlow Developer Specialization.pdf`,
+        type: "Specialization",
+    },
+    // 2. Google Cloud Specialization
+    {
+        title: "Machine Learning on Google Cloud Specialization",
+        fileName: "Coursera Machine Learning on Google Cloud Specialization.pdf",
+        pdfUrl: `${process.env.PUBLIC_URL}/certificates/Coursera Machine Learning on Google Cloud Specialization.pdf`,
+        type: "Specialization",
+    },
+    // 3. Mathematics for Machine Learning Specialization
+    {
+        title: "Mathematics for Machine Learning Specialization",
+        fileName: "Coursera Mathematics for Machine Learning Specialization (Imperial College London).pdf",
+        pdfUrl: `${process.env.PUBLIC_URL}/certificates/Coursera Mathematics for Machine Learning Specialization (Imperial College London).pdf`,
+        type: "Specialization",
+    },
+
+    // 4. Deep Learning Courses
+    {
+        title: "Introduction to TensorFlow for Artificial Intelligence, Machine Learning, and Deep Learning",
+        fileName: "Coursera Introduction to TensorFlow for Artificial Intelligence, Machine Learning, and Deep Learning (DeepLearning.AI).pdf",
+        pdfUrl: `${process.env.PUBLIC_URL}/certificates/Coursera Introduction to TensorFlow for Artificial Intelligence, Machine Learning, and Deep Learning (DeepLearning.AI).pdf`,
         type: "Certificate",
     },
     {
-        title: "Coursera AKM85XZ97U3F",
-        fileName: "Coursera AKM85XZ97U3F.pdf",
-        pdfUrl: `${process.env.PUBLIC_URL}/certificates/Coursera AKM85XZ97U3F.pdf`,
+        title: "Convolutional Neural Networks in TensorFlow",
+        fileName: "Coursera Convolutional Neural Networks in TensorFlow (DeepLearning.AI).pdf",
+        pdfUrl: `${process.env.PUBLIC_URL}/certificates/Coursera Convolutional Neural Networks in TensorFlow (DeepLearning.AI).pdf`,
         type: "Certificate",
     },
     {
-        title: "Coursera B9USQRXEDXLY",
-        fileName: "Coursera B9USQRXEDXLY.pdf",
-        pdfUrl: `${process.env.PUBLIC_URL}/certificates/Coursera B9USQRXEDXLY.pdf`,
+        title: "Natural Language Processing in TensorFlow",
+        fileName: "Coursera Natural Language Processing in TensorFlow (DeepLearning.AI).pdf",
+        pdfUrl: `${process.env.PUBLIC_URL}/certificates/Coursera Natural Language Processing in TensorFlow (DeepLearning.AI).pdf`,
         type: "Certificate",
     },
     {
-        title: "Coursera CYSD2SSHHAXM",
-        fileName: "Coursera CYSD2SSHHAXM.pdf",
-        pdfUrl: `${process.env.PUBLIC_URL}/certificates/Coursera CYSD2SSHHAXM.pdf`,
+        title: "Sequences, Time Series and Prediction",
+        fileName: "Coursera Sequences, Time Series and Prediction (DeepLearning.AI).pdf",
+        pdfUrl: `${process.env.PUBLIC_URL}/certificates/Coursera Sequences, Time Series and Prediction (DeepLearning.AI).pdf`,
+        type: "Certificate",
+    },
+
+    // 5. Google Cloud Courses
+    {
+        title: "How Google does Machine Learning",
+        fileName: "Coursera How Google does Machine Learning (Google Cloud).pdf",
+        pdfUrl: `${process.env.PUBLIC_URL}/certificates/Coursera How Google does Machine Learning (Google Cloud).pdf`,
         type: "Certificate",
     },
     {
-        title: "Coursera D4UJ4HUJSPJG",
-        fileName: "Coursera D4UJ4HUJSPJG.pdf",
-        pdfUrl: `${process.env.PUBLIC_URL}/certificates/Coursera D4UJ4HUJSPJG.pdf`,
+        title: "Launching into Machine Learning",
+        fileName: "Coursera Launching into Machine Learning (Google Cloud).pdf",
+        pdfUrl: `${process.env.PUBLIC_URL}/certificates/Coursera Launching into Machine Learning (Google Cloud).pdf`,
         type: "Certificate",
     },
     {
-        title: "Coursera FPL6KJ3ZCPH8",
-        fileName: "Coursera FPL6KJ3ZCPH8.pdf",
-        pdfUrl: `${process.env.PUBLIC_URL}/certificates/Coursera FPL6KJ3ZCPH8.pdf`,
+        title: "Feature Engineering",
+        fileName: "Coursera Feature Engineering (Google Cloud).pdf",
+        pdfUrl: `${process.env.PUBLIC_URL}/certificates/Coursera Feature Engineering (Google Cloud).pdf`,
         type: "Certificate",
     },
     {
-        title: "Coursera H7D7VB7KCLUF",
-        fileName: "Coursera H7D7VB7KCLUF.pdf",
-        pdfUrl: `${process.env.PUBLIC_URL}/certificates/Coursera H7D7VB7KCLUF.pdf`,
+        title: "Machine Learning in the Enterprise",
+        fileName: "Coursera Machine Learning in the Enterprise (Google Cloud).pdf",
+        pdfUrl: `${process.env.PUBLIC_URL}/certificates/Coursera Machine Learning in the Enterprise (Google Cloud).pdf`,
         type: "Certificate",
     },
     {
-        title: "Coursera JNDPU9S24RGK",
-        fileName: "Coursera JNDPU9S24RGK.pdf",
-        pdfUrl: `${process.env.PUBLIC_URL}/certificates/Coursera JNDPU9S24RGK.pdf`,
+        title: "Build, Train and Deploy ML Models with Keras on Google Cloud",
+        fileName: "Coursera Build, Train and Deploy ML Models with Keras on Google Cloud (Google Cloud).pdf",
+        pdfUrl: `${process.env.PUBLIC_URL}/certificates/Coursera Build, Train and Deploy ML Models with Keras on Google Cloud (Google Cloud).pdf`,
+        type: "Certificate",
+    },
+
+    // 6. Mathematics Courses
+    {
+        title: "Mathematics for Machine Learning: Linear Algebra",
+        fileName: "Coursera Mathematics for Machine Learning Linear Algebra (Imperail College London).pdf",
+        pdfUrl: `${process.env.PUBLIC_URL}/certificates/Coursera Mathematics for Machine Learning Linear Algebra (Imperail College London).pdf`,
         type: "Certificate",
     },
     {
-        title: "Coursera KGT6AULFDA2U",
-        fileName: "Coursera KGT6AULFDA2U.pdf",
-        pdfUrl: `${process.env.PUBLIC_URL}/certificates/Coursera KGT6AULFDA2U.pdf`,
+        title: "Mathematics for Machine Learning: Multivariate Calculus",
+        fileName: "Coursera Mathematics for Machine Learning Multivariate Calculus (Imperial College London).pdf",
+        pdfUrl: `${process.env.PUBLIC_URL}/certificates/Coursera Mathematics for Machine Learning Multivariate Calculus (Imperial College London).pdf`,
         type: "Certificate",
     },
     {
-        title: "Coursera LKA322WAWYSD",
-        fileName: "Coursera LKA322WAWYSD.pdf",
-        pdfUrl: `${process.env.PUBLIC_URL}/certificates/Coursera LKA322WAWYSD.pdf`,
+        title: "Mathematics for Machine Learning: PCA",
+        fileName: "Coursera Mathematics for Machine Learning PCA (Imperial College London).pdf",
+        pdfUrl: `${process.env.PUBLIC_URL}/certificates/Coursera Mathematics for Machine Learning PCA (Imperial College London).pdf`,
         type: "Certificate",
     },
+
+    // 7. Other
     {
-        title: "Coursera LKN3SNYTKE2S",
-        fileName: "Coursera LKN3SNYTKE2S.pdf",
-        pdfUrl: `${process.env.PUBLIC_URL}/certificates/Coursera LKN3SNYTKE2S.pdf`,
-        type: "Certificate",
-    },
-    {
-        title: "Coursera MON44V35EVVL",
-        fileName: "Coursera MON44V35EVVL.pdf",
-        pdfUrl: `${process.env.PUBLIC_URL}/certificates/Coursera MON44V35EVVL.pdf`,
-        type: "Certificate",
-    },
-    {
-        title: "Coursera PQCUDZK2D5UG",
-        fileName: "Coursera PQCUDZK2D5UG.pdf",
-        pdfUrl: `${process.env.PUBLIC_URL}/certificates/Coursera PQCUDZK2D5UG.pdf`,
-        type: "Certificate",
-    },
-    {
-        title: "Coursera TXAGMSGXX5V8",
-        fileName: "Coursera TXAGMSGXX5V8.pdf",
-        pdfUrl: `${process.env.PUBLIC_URL}/certificates/Coursera TXAGMSGXX5V8.pdf`,
-        type: "Certificate",
-    },
-    {
-        title: "Coursera WG27NO7ALWY2",
-        fileName: "Coursera WG27NO7ALWY2.pdf",
-        pdfUrl: `${process.env.PUBLIC_URL}/certificates/Coursera WG27NO7ALWY2.pdf`,
-        type: "Certificate",
-    },
-    {
-        title: "Coursera ZKBQLGB3RFRY",
-        fileName: "Coursera ZKBQLGB3RFRY.pdf",
-        pdfUrl: `${process.env.PUBLIC_URL}/certificates/Coursera ZKBQLGB3RFRY.pdf`,
+        title: "Teamwork Skills: Communicating Effectively in Groups",
+        fileName: "Coursera Teamwork Skills Communicating Effectively in Groups (University of Colorado Boulder).pdf",
+        pdfUrl: `${process.env.PUBLIC_URL}/certificates/Coursera Teamwork Skills Communicating Effectively in Groups (University of Colorado Boulder).pdf`,
         type: "Certificate",
     },
 ];
