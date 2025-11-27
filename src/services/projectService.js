@@ -63,7 +63,7 @@ const projects = [
   {
     projectTitle: "Alzheimer Detection",
     projectSubTitle: "Medical AI | Classification",
-    projectTimeline: "2025",
+    projectTimeline: "2023",
     projectLink: "alzheimer-detection",
     projectTagline: "Early detection of Alzheimer's disease using MRI scan classification.",
     projectImages: [`${process.env.PUBLIC_URL}/project-images/alzheimer-detection.png`],
