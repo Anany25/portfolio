@@ -1,6 +1,18 @@
 // Static Project Data for Anany Singh
 const projects = [
   {
+    projectTitle: "Text-to-SQL LoRA with Llama-3",
+    projectSubTitle: "NLP | LLM Fine-tuning",
+    projectTimeline: "2025",
+    projectLink: "text-to-sql-lora",
+    projectTagline: "Fine-tuning Llama-3-8B on SQL generation tasks using Unsloth and LoRA.",
+    projectImages: [`${process.env.PUBLIC_URL}/project-images/text-to-sql.png`],
+    likesCount: 20,
+    featured: true,
+    description: "Fine-tuned Llama-3-8B on the `sql-create-context` dataset using Unsloth for efficient LoRA training. Achieved 87.9% accuracy on the test set, a significant improvement over the base model. Features custom data loading, modular structure, and WSL2 optimization.",
+    githubLink: "https://github.com/Anany25/text-to-sql-lora"
+  },
+  {
     projectTitle: "Advanced Colorization GAN",
     projectSubTitle: "Deep Learning | GANs",
     projectTimeline: "2025",
