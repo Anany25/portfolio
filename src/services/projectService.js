@@ -5,11 +5,11 @@ const projects = [
     projectSubTitle: "RAG | Visual Language Models",
     projectTimeline: "2025",
     projectLink: "multimodal-rag",
-    projectTagline: "Chat with financial charts locally using ColQwen2 and Qwen2-VL.",
+    projectTagline: "Chat with complex charts, graphs, and tables locally using ColQwen2 and Qwen2-VL.",
     projectImages: [`${process.env.PUBLIC_URL}/project-images/multimodal-rag.png`],
     likesCount: 15,
     featured: true,
-    description: "A fully local multimodal RAG system for querying financial charts. Uses ColQwen2 for state-of-the-art vision-retrieval and Qwen2-VL-2B for detailed generation. Optimized for consumer GPUs (12GB VRAM) with complete privacy and no API calls.",
+    description: "A fully local multimodal RAG system for querying charts, graphs, or tables from any document. Uses ColQwen2 for state-of-the-art vision-retrieval and Qwen2-VL-2B for detailed generation. Optimized for consumer GPUs (12GB VRAM) with complete privacy and no API calls.",
     githubLink: "https://github.com/Anany25/multimodal-rag"
   },
   {
