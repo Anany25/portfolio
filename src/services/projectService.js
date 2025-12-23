@@ -1,6 +1,18 @@
 // Static Project Data for Anany Singh
 const projects = [
   {
+    projectTitle: "Multimodal RAG: Chat with Charts",
+    projectSubTitle: "RAG | Visual Language Models",
+    projectTimeline: "2025",
+    projectLink: "multimodal-rag",
+    projectTagline: "Chat with financial charts locally using ColQwen2 and Qwen2-VL.",
+    projectImages: [`${process.env.PUBLIC_URL}/project-images/multimodal-rag.png`],
+    likesCount: 15,
+    featured: true,
+    description: "A fully local multimodal RAG system for querying financial charts. Uses ColQwen2 for state-of-the-art vision-retrieval and Qwen2-VL-2B for detailed generation. Optimized for consumer GPUs (12GB VRAM) with complete privacy and no API calls.",
+    githubLink: "https://github.com/Anany25/multimodal-rag"
+  },
+  {
     projectTitle: "Text-to-SQL LoRA with Llama-3",
     projectSubTitle: "NLP | LLM Fine-tuning",
     projectTimeline: "2025",
